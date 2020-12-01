@@ -1,0 +1,9 @@
+.newsWrapper {
+    background-color: #facded;
+    padding-left: 200px;
+    height: 500px;
+}
+.newsTitle {
+    font-weight: bold;
+    padding: 5px;
+}

@@ -1,0 +1,16 @@
+.headerWrapper{
+    background-color: bisque;
+    width: 1280px;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+}
+.headerImgLogo{
+    width: 90px;
+    height: 90px;
+    float: left;
+    padding-left:10px ;
+}
+.headerText{
+ padding-right: 15px;
+}

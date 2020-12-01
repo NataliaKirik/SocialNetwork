@@ -1,0 +1,9 @@
+.profileWrapper {
+    background-color: #facded;
+    padding-left: 200px;
+    height: 500px;
+}
+.titleProfile {
+    font-weight: bold;
+    padding: 5px;
+}
