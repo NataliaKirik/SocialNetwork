@@ -5,15 +5,12 @@ import Main from "./Components/2main/main";
 import Navbar from "./Components/3navbar/navbar";
 import Footer from "./Components/4footer/footer";
 import styles from './App.module.css'
-import Message from "./Components/3navbar/2messages/message";
+import Messages from "./Components/3navbar/2messages/messages";
 import Profile from "./Components/3navbar/1profile/profile";
 import News from "./Components/3navbar/3news/news";
 import Music from "./Components/3navbar/4music/music";
 import Settings from "./Components/3navbar/5settings/settings";
 import { BrowserRouter, Route, Link } from "react-router-dom";
-
-
-
 
 
 function App() {
@@ -24,7 +21,7 @@ function App() {
             <Navbar/>
             <Route component={Main} path={'/Main'}/>
             <Route component={Profile} path={'/Profile'}/>
-            <Route component={Message} path={'/Message'}/>
+            <Route component={Messages} path={'/Message'}/>
             <Route component={News} path={'/News'}/>
             <Route component={Music} path={'/Music'}/>
             <Route component={Settings} path={'/Settings'}/>

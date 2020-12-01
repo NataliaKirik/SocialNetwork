@@ -11,3 +11,10 @@
     justify-content: space-around;
     position: fixed;
 }
+.navBarWrapper a{
+    color: white;
+    text-decoration: none;
+}
+.navBarWrapper a.activeLink{
+    color: #0b3788;
+}

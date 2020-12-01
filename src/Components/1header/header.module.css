@@ -1,6 +1,6 @@
 .headerWrapper{
     background-color: bisque;
-    width: 1280px;
+    width: 100%;
     height: 90px;
     display: flex;
     justify-content: space-between;

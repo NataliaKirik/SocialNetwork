@@ -1,0 +1,26 @@
+.MessageMainWrapper {
+    background-color: #facded;
+    padding-left: 200px;
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*____________________________Users___________________________________________*/
+.message_Title, .usersMessageTitle {
+    font-weight: bold;
+    margin: 5px;
+}
+
+.dialogsUsersWrapper, .messageWrapper {
+    margin: 10px;
+}
+
+.usersWrapper, .usersMessageWrapper {
+}
+
+.user,.message {
+    margin:5px;
+}
+
+/*__________________________________Messages___________________________________*/
