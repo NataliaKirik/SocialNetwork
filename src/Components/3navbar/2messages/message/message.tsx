@@ -3,6 +3,7 @@ import s from './message.module.css'
 
 type MessageProps={
     title:string
+    id:number
 }
 const Message=(props:MessageProps)=>{
     return(

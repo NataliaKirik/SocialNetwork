@@ -4,6 +4,32 @@ import {BrowserRouter} from "react-router-dom";
 import User from "./message/user";
 import Message from "./message/message";
 
+let dataUsersMessages = [
+    {id: 1, title: 'Igor Petrov'},
+    {id: 2, title: 'Ilya Sergeev'},
+    {id: 3, title: 'George Ivanov'},
+    {id: 4, title: 'Maria Sokolova'},
+    {id: 5, title: 'Mike Sidorov'}
+]
+let dataMessages = [
+    {id: 1, title: 'Hello'},
+    {id: 2, title: 'How are you?'},
+    {id: 3, title: 'Hi'},
+    {id: 4, title: 'YO'},
+    {id: 5, title: 'I\'m fine'}
+]
+
+let arrayUser = dataUsersMessages.map(
+    (user) => {
+        return (<div className={s.user}><User title={user.title} id={user.id}/></div>)
+    }
+)
+
+let arrayMessages = dataMessages.map(
+    (message) => {
+        return (<div className={s.message}><Message title={message.title} id={message.id}/></div>)
+    }
+)
 
 const Messages = () => {
     return (
@@ -12,21 +38,18 @@ const Messages = () => {
                 <div className={s.dialogsUsersWrapper}>
                     <div className={s.message_Title}>Users Dialogs</div>
                     <div className={s.usersWrapper}>
-                        <div className={s.user}><User title={'Igor Petrov'}/></div>
-                        <div className={s.user}><User title={'Ilya Sergeev'}/></div>
-                        <div className={s.user}><User title={'George Ivanov'}/></div>
-                        <div className={s.user}><User title={'Maria Sokolova'}/></div>
-                        <div className={s.user}><User title={'Mike Sidorov'}/></div>
+
+                        {arrayUser}
+
                     </div>
                 </div>
+
                 <div className={s.messageWrapper}>
                     <div className={s.usersMessageTitle}>Users Messages</div>
                     <div className={s.usersMessageWrapper}>
-                        <div className={s.message}><Message title={'Hello'}/></div>
-                        <div className={s.message}><Message title={'I\'m fine'}/></div>
-                        <div className={s.message}><Message title={'Yo'}/></div>
-                        <div className={s.message}><Message title={'How are you?'}/></div>
-                        <div className={s.message}><Message title={'YO!!'}/></div>
+
+                        {arrayMessages}
+
                     </div>
                 </div>
             </div>
