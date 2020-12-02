@@ -3,7 +3,7 @@
     padding-left: 200px;
     height: 500px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 /*____________________________Users___________________________________________*/
@@ -17,6 +17,7 @@
 }
 
 .usersWrapper, .usersMessageWrapper {
+
 }
 
 .user,.message {

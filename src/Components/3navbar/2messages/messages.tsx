@@ -1,37 +1,30 @@
 import React from "react";
 import s from './messages.module.css'
 import {BrowserRouter} from "react-router-dom";
-import User from "./message/user";
-import Message from "./message/message";
+import User from "./message/user/user";
+import Message from "./message/usersMessage/message";
 
-let dataUsersMessages = [
-    {id: 1, title: 'Igor Petrov'},
-    {id: 2, title: 'Ilya Sergeev'},
-    {id: 3, title: 'George Ivanov'},
-    {id: 4, title: 'Maria Sokolova'},
-    {id: 5, title: 'Mike Sidorov'}
-]
-let dataMessages = [
-    {id: 1, title: 'Hello'},
-    {id: 2, title: 'How are you?'},
-    {id: 3, title: 'Hi'},
-    {id: 4, title: 'YO'},
-    {id: 5, title: 'I\'m fine'}
-]
+type MessageProps = {
+    title: string
+    id: number
+}
+type MessagesProps = {
+    dataUsersMessages: Array<MessageProps>
+    dataMessages: Array<MessageProps>
+}
 
-let arrayUser = dataUsersMessages.map(
-    (user) => {
-        return (<div className={s.user}><User title={user.title} id={user.id}/></div>)
-    }
-)
+const Messages = (props: MessagesProps) => {
+    let arrayUser = props.dataUsersMessages.map(
+        (user: MessageProps) => {
+            return (<div className={s.user}><User title={user.title} id={user.id}/></div>)
+        }
+    )
 
-let arrayMessages = dataMessages.map(
-    (message) => {
-        return (<div className={s.message}><Message title={message.title} id={message.id}/></div>)
-    }
-)
-
-const Messages = () => {
+    let arrayMessages = props.dataMessages.map(
+        (message: MessageProps) => {
+            return (<div className={s.message}><Message title={message.title} id={message.id}/></div>)
+        }
+    )
     return (
         <BrowserRouter>
             <div className={s.MessageMainWrapper}>
