@@ -1,5 +1,4 @@
 .mainWrapper{
+    grid-column: 3/13;
     background-color: #facded;
-    padding-left: 200px;
-  height: 500px;
 }

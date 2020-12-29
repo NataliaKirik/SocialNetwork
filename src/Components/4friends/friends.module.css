@@ -1,0 +1,12 @@
+.friendsWrapper {
+    background-color: #ff71af;
+    border-top: 2px solid #0b3788;
+    border-bottom: 2px solid #0b3788;
+
+}
+
+.friendsTitle {
+    color: #0b3788;
+    padding: 5px;
+    margin-left: 35px;
+}

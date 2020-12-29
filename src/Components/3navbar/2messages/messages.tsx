@@ -3,25 +3,23 @@ import s from './messages.module.css'
 import {BrowserRouter} from "react-router-dom";
 import User from "./message/user/user";
 import Message from "./message/usersMessage/message";
+import {MessagesType, usersMessagesType} from "../../../Redux/state";
 
-type MessageProps = {
-    title: string
-    id: number
-}
 type MessagesProps = {
-    dataUsersMessages: Array<MessageProps>
-    dataMessages: Array<MessageProps>
+    dataUsersMessages: Array<usersMessagesType>
+    dataMessages: Array<MessagesType>
 }
 
-const Messages = (props: MessagesProps) => {
+const Messages: React.FC<MessagesProps> = (props) => {
     let arrayUser = props.dataUsersMessages.map(
-        (user: MessageProps) => {
+        (user: usersMessagesType) => {
             return (<div className={s.user}><User title={user.title} id={user.id}/></div>)
         }
     )
 
+
     let arrayMessages = props.dataMessages.map(
-        (message: MessageProps) => {
+        (message: MessagesType) => {
             return (<div className={s.message}><Message title={message.title} id={message.id}/></div>)
         }
     )

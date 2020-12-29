@@ -1,9 +1,8 @@
 .MessageMainWrapper {
     background-color: #facded;
-    padding-left: 200px;
-    height: 500px;
+    grid-column: 3/13;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
 }
 
 /*____________________________Users___________________________________________*/
@@ -20,8 +19,8 @@
 
 }
 
-.user,.message {
-    margin:5px;
+.user, .message {
+    margin: 5px;
 }
 
 /*__________________________________Messages___________________________________*/

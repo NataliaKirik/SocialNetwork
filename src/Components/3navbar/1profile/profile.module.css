@@ -1,7 +1,6 @@
 .profileWrapper {
     background-color: #facded;
-    padding-left: 200px;
-    height: 500px;
+    grid-column: 3/13;
 }
 .titleProfile {
     font-weight: bold;
