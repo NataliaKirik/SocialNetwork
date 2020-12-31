@@ -59,6 +59,12 @@ export let store: StoreType = {
         }
     }
 }
+export const addPostActionCreator = () => ({type: 'ADD_POST'})
+export const updateNewPostTextActionCreator = (text?: string) => ({
+    type: 'UPDATE_NEW_POST_TEXT',
+    newText: text
+})
+
 export type StoreType = {
     _state: RootStateType
     _callSubscriber: (state: RootStateType) => void
