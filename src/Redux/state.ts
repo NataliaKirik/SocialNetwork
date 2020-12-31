@@ -1,4 +1,4 @@
-export let store:StoreType = {
+export let store: StoreType = {
     _state: {
         mainPage: {
             posts: [
@@ -34,35 +34,37 @@ export let store:StoreType = {
     _callSubscriber(state: RootStateType) {
         console.log('state changed');
     },
+
     getState() {
         return this._state
     },
-    addPost() {
-        let newPost = {
-            id: 5,
-            title: this._state.mainPage.newPostText,
-            likesCount: 10,
-            name: 'Brand Nesterov'
-        }
-        this._state.mainPage.posts.push(newPost)
-        this._state.mainPage.newPostText = ''
-        this._callSubscriber(this.getState())
-    },
-    updateNewPostText(newText?:string) {
-        this._state.mainPage.newPostText = newText
-        this._callSubscriber(this.getState())
-    },
     subscriber(observer: (state: RootStateType) => void) {
         this._callSubscriber = observer
+    },
+
+    dispatch(action) {
+        if (action.type === 'ADD_POST') {
+            let newPost = {
+                id: 5,
+                title: this._state.mainPage.newPostText,
+                likesCount: 10,
+                name: 'Brand Nesterov'
+            }
+            this._state.mainPage.posts.push(newPost)
+            this._state.mainPage.newPostText = ''
+            this._callSubscriber(this.getState())
+        } else if (action.type === 'UPDATE_NEW_POST_TEXT') {
+            this._state.mainPage.newPostText = action.newText
+            this._callSubscriber(this.getState())
+        }
     }
 }
-export type StoreType={
-    _state:RootStateType
-    _callSubscriber:(state:RootStateType)=>void
-    getState:()=>RootStateType
-    addPost:()=>void
-    updateNewPostText:(newText?:string)=>void
-    subscriber:(observer: (state: RootStateType) => void)=>void
+export type StoreType = {
+    _state: RootStateType
+    _callSubscriber: (state: RootStateType) => void
+    getState: () => RootStateType
+    subscriber: (observer: (state: RootStateType) => void) => void
+    dispatch: (action: any) => void
 }
 
 export type RootStateType = {

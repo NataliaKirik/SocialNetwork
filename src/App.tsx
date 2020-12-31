@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.module.css';
 import Header from "./Components/1header/header";
-import Main from "./Components/2main/main";
+import Main, {DispatchActionType} from "./Components/2main/main";
 import Navbar from "./Components/3navbar/navbar";
 import Footer from "./Components/5footer/footer";
 import styles from './App.module.css'
@@ -18,8 +18,7 @@ type AppProps = {
     dataMainPage: mainPageType
     dataMessagePage: messagePageType
     dataFriendsLittlePage: friendsLittlePageType
-    addPost: (textMessage?: string) => void
-    updateNewPostText: (newText?: string) => void
+    dispatch: (action: DispatchActionType) => void
 }
 
 function App(props: AppProps) {
@@ -28,9 +27,8 @@ function App(props: AppProps) {
             <div className={styles.App}>
                 <Header/>
                 <Navbar dataFriends={props.dataFriendsLittlePage}/>
-                <Route render={() => <Main addPost={props.addPost} dataMain={props.dataMainPage.posts}
-                                           newPostText={props.dataMainPage.newPostText}
-                                           updateNewPostText={props.updateNewPostText}/>} path={'/Main'}
+                <Route render={() => <Main dispatch={props.dispatch} dataMain={props.dataMainPage.posts}
+                                           newPostText={props.dataMainPage.newPostText}/>} path={'/Main'}
                 />
                 <Route render={() => <Profile/>} path={'/Profile'}/>
                 <Route render={() => <Messages dataUsersMessages={props.dataMessagePage.usersMessages}

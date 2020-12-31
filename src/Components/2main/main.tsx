@@ -5,9 +5,12 @@ import {PostsType} from "../../Redux/state";
 
 type MainProps = {
     dataMain: Array<PostsType>
-    addPost: (textMessage?: string) => void
+    dispatch: (action: DispatchActionType) => void
     newPostText?: string
-    updateNewPostText: (newText?: string) => void
+}
+export type DispatchActionType = {
+    type: string
+    newText?: string
 }
 
 
@@ -22,12 +25,12 @@ const Main: React.FC<MainProps> = (props) => {
     let newPostElement = React.createRef<HTMLTextAreaElement>()
     const addPost = () => {
         let text = newPostElement.current?.value
-        props.addPost(text)
+        props.dispatch({type: 'ADD_POST'})
     }
 
     let onPostChange = () => {
         let text = newPostElement.current?.value
-        props.updateNewPostText(text)
+        props.dispatch({type: 'UPDATE_NEW_POST_TEXT', newText: text})
     }
 
     return (<div className={s.mainWrapper}>
