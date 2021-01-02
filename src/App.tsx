@@ -32,7 +32,9 @@ function App(props: AppProps) {
                 />
                 <Route render={() => <Profile/>} path={'/Profile'}/>
                 <Route render={() => <Messages dataUsersMessages={props.dataMessagePage.usersMessages}
-                                               dataMessages={props.dataMessagePage.messages}/>} path={'/Message'}/>
+                                               dataMessages={props.dataMessagePage.messages}
+                                               newMessage={props.dataMessagePage.newMessageText}
+                                               dispatch={props.dispatch}/>} path={'/Message'}/>
                 <Route render={() => <News/>} path={'/News'}/>
                 <Route render={() => <Music/>} path={'/Music'}/>
                 <Route render={() => <Settings/>} path={'/Settings'}/>

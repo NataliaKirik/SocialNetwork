@@ -24,7 +24,6 @@ const Main: React.FC<MainProps> = (props) => {
     ]
     let newPostElement = React.createRef<HTMLTextAreaElement>()
     const addPost = () => {
-        let text = newPostElement.current?.value
         props.dispatch(addPostActionCreator())
     }
 

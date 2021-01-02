@@ -22,7 +22,8 @@ export let store: StoreType = {
                 {id: 3, title: 'Hi'},
                 {id: 4, title: 'YO'},
                 {id: 5, title: 'I\'m fine'}
-            ]
+            ],
+            newMessageText: ''
         },
         friendsLittlePage: {
             friends: [
@@ -53,15 +54,35 @@ export let store: StoreType = {
             this._state.mainPage.posts.push(newPost)
             this._state.mainPage.newPostText = ''
             this._callSubscriber(this.getState())
-        } else if (action.type === 'UPDATE_NEW_POST_TEXT') {
+        }
+        if (action.type === 'UPDATE_NEW_POST_TEXT') {
             this._state.mainPage.newPostText = action.newText
+            this._callSubscriber(this.getState())
+        }
+
+        if (action.type === 'ADD_MESSAGE') {
+            let newMessage = {
+                id: 6,
+                title: this._state.messagePage.newMessageText
+            }
+            this._state.messagePage.messages.push(newMessage)
+            this._state.messagePage.newMessageText = ''
+            this._callSubscriber(this.getState())
+        } else if (action.type === 'UPDATE_NEW_MESSAGE_TEXT') {
+            this._state.messagePage.newMessageText = action.newText
             this._callSubscriber(this.getState())
         }
     }
 }
+
 export const addPostActionCreator = () => ({type: 'ADD_POST'})
 export const updateNewPostTextActionCreator = (text?: string) => ({
     type: 'UPDATE_NEW_POST_TEXT',
+    newText: text
+})
+export const addMessageActionCreator = () => ({type: 'ADD_MESSAGE'})
+export const updateNewMessageTextActionCreator = (text?: string) => ({
+    type: 'UPDATE_NEW_MESSAGE_TEXT',
     newText: text
 })
 
@@ -106,6 +127,7 @@ export type friendsLittlePageType = {
 export type messagePageType = {
     usersMessages: Array<usersMessagesType>
     messages: Array<MessagesType>
+    newMessageText: string
 }
 
 
