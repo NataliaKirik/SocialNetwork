@@ -4,11 +4,11 @@ import {BrowserRouter} from "react-router-dom";
 import User from "./message/user/user";
 import Message from "./message/usersMessage/message";
 import {
-    addMessageActionCreator,
-    MessagesType, updateNewMessageTextActionCreator,
+    MessagesType,
     usersMessagesType
 } from "../../../Redux/state";
 import {DispatchActionType} from "../../2main/main";
+import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../Redux/messages_Reducer";
 
 type MessagesProps = {
     dataUsersMessages: Array<usersMessagesType>

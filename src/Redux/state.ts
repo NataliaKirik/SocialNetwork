@@ -1,3 +1,6 @@
+import messagesReducer from "./messages_Reducer";
+import mainReducer from "./main_Reducer";
+
 export let store: StoreType = {
     _state: {
         mainPage: {
@@ -44,47 +47,12 @@ export let store: StoreType = {
     },
 
     dispatch(action) {
-        if (action.type === 'ADD_POST') {
-            let newPost = {
-                id: 5,
-                title: this._state.mainPage.newPostText,
-                likesCount: 10,
-                name: 'Brand Nesterov'
-            }
-            this._state.mainPage.posts.push(newPost)
-            this._state.mainPage.newPostText = ''
-            this._callSubscriber(this.getState())
-        }
-        if (action.type === 'UPDATE_NEW_POST_TEXT') {
-            this._state.mainPage.newPostText = action.newText
-            this._callSubscriber(this.getState())
-        }
-
-        if (action.type === 'ADD_MESSAGE') {
-            let newMessage = {
-                id: 6,
-                title: this._state.messagePage.newMessageText
-            }
-            this._state.messagePage.messages.push(newMessage)
-            this._state.messagePage.newMessageText = ''
-            this._callSubscriber(this.getState())
-        } else if (action.type === 'UPDATE_NEW_MESSAGE_TEXT') {
-            this._state.messagePage.newMessageText = action.newText
-            this._callSubscriber(this.getState())
-        }
+        this._state.messagePage = messagesReducer(this._state.messagePage, action)
+        this._state.mainPage = mainReducer(this._state.mainPage, action)
+        this._callSubscriber(this.getState())
     }
 }
 
-export const addPostActionCreator = () => ({type: 'ADD_POST'})
-export const updateNewPostTextActionCreator = (text?: string) => ({
-    type: 'UPDATE_NEW_POST_TEXT',
-    newText: text
-})
-export const addMessageActionCreator = () => ({type: 'ADD_MESSAGE'})
-export const updateNewMessageTextActionCreator = (text?: string) => ({
-    type: 'UPDATE_NEW_MESSAGE_TEXT',
-    newText: text
-})
 
 export type StoreType = {
     _state: RootStateType

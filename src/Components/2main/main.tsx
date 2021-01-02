@@ -1,7 +1,8 @@
 import React from "react";
 import s from './main.module.css'
 import Post from "./post/post";
-import {addPostActionCreator, PostsType, updateNewPostTextActionCreator} from "../../Redux/state";
+import {PostsType} from "../../Redux/state";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../Redux/main_Reducer";
 
 type MainProps = {
     dataMain: Array<PostsType>
