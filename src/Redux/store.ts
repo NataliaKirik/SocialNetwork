@@ -1,5 +1,6 @@
 import messagesReducer from "./messages_Reducer";
 import mainReducer from "./main_Reducer";
+import friendsLittlePageReducer from "./friendsLittlePage_Reducer";
 
 export let store: StoreType = {
     _state: {
@@ -49,7 +50,8 @@ export let store: StoreType = {
     dispatch(action) {
         this._state.messagePage = messagesReducer(this._state.messagePage, action)
         this._state.mainPage = mainReducer(this._state.mainPage, action)
-        this._callSubscriber(this.getState())
+        this._state.friendsLittlePage=friendsLittlePageReducer(this._state.friendsLittlePage,action)
+        this._callSubscriber(this._state)
     }
 }
 
@@ -73,7 +75,7 @@ export type mainPageType = {
 }
 export type PostsType = {
     id: number
-    title: string | undefined
+    title?: string
     likesCount: number
     name: string
 }
@@ -96,6 +98,7 @@ export type messagePageType = {
     usersMessages: Array<usersMessagesType>
     messages: Array<MessagesType>
     newMessageText: string
+
 }
 
 

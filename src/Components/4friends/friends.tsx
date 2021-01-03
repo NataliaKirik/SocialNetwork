@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './friends.module.css'
 import {Friend} from "./Friend/friend";
-import {friendsLittlePageType} from "../../Redux/state";
+import {friendsLittlePageType} from "../../Redux/store";
 
 type FriendsProps = {
     name: friendsLittlePageType

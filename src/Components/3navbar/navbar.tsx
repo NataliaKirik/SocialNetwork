@@ -2,12 +2,10 @@ import React from "react";
 import s from './navbar.module.css'
 import {NavLink} from "react-router-dom";
 import {Friends} from "../4friends/friends";
-import {friendsLittlePageType} from "../../Redux/state";
 
-type NavbarProps={
-    dataFriends: friendsLittlePageType
-}
-const Navbar:React.FC<NavbarProps> = (props) => {
+
+
+const Navbar = (props:any) => {
     return (
         <div className={s.navBarWrapper}>
             <div><NavLink to={'/Main'} activeClassName={s.activeLink} className={s.link}>Main</NavLink></div>

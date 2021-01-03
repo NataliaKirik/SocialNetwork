@@ -11,13 +11,12 @@ import News from "./Components/3navbar/3news/news";
 import Music from "./Components/3navbar/4music/music";
 import Settings from "./Components/3navbar/5settings/settings";
 import {BrowserRouter, Route, Link} from "react-router-dom";
-import {friendsLittlePageType, mainPageType, messagePageType, PostsType} from "./Redux/state";
+import {friendsLittlePageType, mainPageType, messagePageType, PostsType, RootStateType, StoreType} from "./Redux/store";
 import {Friends} from './Components/4friends/friends';
 
 type AppProps = {
-    dataMainPage: mainPageType
-    dataMessagePage: messagePageType
-    dataFriendsLittlePage: friendsLittlePageType
+    state: RootStateType
+    store:any
     dispatch: (action: DispatchActionType) => void
 }
 
@@ -26,14 +25,14 @@ function App(props: AppProps) {
         <BrowserRouter>
             <div className={styles.App}>
                 <Header/>
-                <Navbar dataFriends={props.dataFriendsLittlePage}/>
-                <Route render={() => <Main dispatch={props.dispatch} dataMain={props.dataMainPage.posts}
-                                           newPostText={props.dataMainPage.newPostText}/>} path={'/Main'}
+                <Navbar dataFriends={props.state.friendsLittlePage}/>
+                <Route render={() => <Main dispatch={props.dispatch} dataMain={props.state.mainPage.posts}
+                                           newPostText={props.state.mainPage.newPostText}/>} path={'/Main'}
                 />
                 <Route render={() => <Profile/>} path={'/Profile'}/>
-                <Route render={() => <Messages dataUsersMessages={props.dataMessagePage.usersMessages}
-                                               dataMessages={props.dataMessagePage.messages}
-                                               newMessage={props.dataMessagePage.newMessageText}
+                <Route render={() => <Messages dataUsersMessages={props.state.messagePage.usersMessages}
+                                               dataMessages={props.state.messagePage.messages}
+                                               newMessage={props.state.messagePage.newMessageText}
                                                dispatch={props.dispatch}/>} path={'/Message'}/>
                 <Route render={() => <News/>} path={'/News'}/>
                 <Route render={() => <Music/>} path={'/Music'}/>

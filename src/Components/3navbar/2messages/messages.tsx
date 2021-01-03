@@ -6,7 +6,7 @@ import Message from "./message/usersMessage/message";
 import {
     MessagesType,
     usersMessagesType
-} from "../../../Redux/state";
+} from "../../../Redux/store";
 import {DispatchActionType} from "../../2main/main";
 import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../Redux/messages_Reducer";
 

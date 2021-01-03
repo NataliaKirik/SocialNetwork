@@ -3,20 +3,28 @@ import './index.css';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {RootStateType, store} from "./Redux/state";
+import store from "./Redux/redux-store";
 
-let rerenderEntireTree = (state: RootStateType) => {
+
+
+let rerenderEntireTree = (state:any) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App dataMainPage={store._state.mainPage} dataMessagePage={store._state.messagePage}
-                 dataFriendsLittlePage={store._state.friendsLittlePage}
+            <App state={state} store={store}
                  dispatch={store.dispatch.bind(store)}/>
+            {console.log(state)}
+            {console.log(store)}
         </React.StrictMode>,
         document.getElementById('root')
     )
 }
+
 rerenderEntireTree(store.getState());
 
-store.subscriber(rerenderEntireTree)
+store.subscribe(() => {
+    let state = store.getState()
+    rerenderEntireTree(state)
+})
+
 
 

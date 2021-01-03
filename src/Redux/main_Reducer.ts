@@ -1,7 +1,18 @@
+import {mainPageType} from "./store";
+
 const ADD_POST = 'ADD_POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
 
-const mainReducer = (state: any, action: any) => {
+let initialState:mainPageType = {
+    posts: [
+        {id: 1, title: 'Hello', likesCount: 15, name: 'Igor Petrov'},
+        {id: 2, title: 'What are you doing?', likesCount: 20, name: 'George Ivanov'},
+        {id: 3, title: 'Yo', likesCount: 10, name: 'Mike Sidorov'}
+    ],
+    newPostText: ''
+}
+
+const mainReducer = (state=initialState, action: any) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
