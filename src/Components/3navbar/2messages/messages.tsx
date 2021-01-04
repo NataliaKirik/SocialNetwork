@@ -12,9 +12,10 @@ import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../
 
 type MessagesProps = {
     dataUsersMessages: Array<usersMessagesType>
-    dataMessages: Array<MessagesType>
-    dispatch: (action: DispatchActionType) => void
-    newMessage: string
+    arrayMessage: Array<MessagesType>
+    addMessage: () => void
+    messageChange: (text?: string) => void
+    newMessageText?: string
 }
 
 const Messages: React.FC<MessagesProps> = (props) => {
@@ -23,7 +24,7 @@ const Messages: React.FC<MessagesProps> = (props) => {
             return (<div className={s.user}><User title={user.title} id={user.id}/></div>)
         }
     )
-    let arrayMessages = props.dataMessages.map(
+    let arrayMessages = props.arrayMessage.map(
         (message: MessagesType) => {
             return (<div className={s.message}><Message title={message.title} id={message.id}/></div>)
         }
@@ -31,12 +32,12 @@ const Messages: React.FC<MessagesProps> = (props) => {
 
     let newPostMessage = React.createRef<HTMLTextAreaElement>()
     const addMessage = () => {
-        props.dispatch(addMessageActionCreator())
+        props.addMessage()
     }
 
     let onMessageChange = () => {
         let text = newPostMessage.current?.value
-        props.dispatch(updateNewMessageTextActionCreator(text))
+        props.messageChange(text)
     }
     return (
         <BrowserRouter>
@@ -55,7 +56,7 @@ const Messages: React.FC<MessagesProps> = (props) => {
                     <div className={s.usersMessageWrapper}>
 
                         {arrayMessages}
-                        <textarea ref={newPostMessage} onChange={onMessageChange} value={props.newMessage}/>
+                        <textarea ref={newPostMessage} onChange={onMessageChange} value={props.newMessageText}/>
                         <div>
                             <button onClick={addMessage}>send message</button>
                         </div>

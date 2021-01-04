@@ -6,14 +6,11 @@ import App from './App';
 import store from "./Redux/redux-store";
 
 
-
-let rerenderEntireTree = (state:any) => {
+let rerenderEntireTree = (state: any) => {
     ReactDOM.render(
         <React.StrictMode>
             <App state={state} store={store}
                  dispatch={store.dispatch.bind(store)}/>
-            {console.log(state)}
-            {console.log(store)}
         </React.StrictMode>,
         document.getElementById('root')
     )
