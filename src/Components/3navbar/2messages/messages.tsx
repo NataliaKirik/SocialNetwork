@@ -41,29 +41,31 @@ const Messages: React.FC<MessagesProps> = (props) => {
     }
     return (
         <BrowserRouter>
-            <div className={s.MessageMainWrapper}>
-                <div className={s.dialogsUsersWrapper}>
-                    <div className={s.message_Title}>Users Dialogs</div>
-                    <div className={s.usersWrapper}>
 
-                        {arrayUser}
+                <div className={s.MessageMainWrapper}>
+                    <div className={s.dialogsUsersWrapper}>
+                        <div className={s.message_Title}>Users Dialogs</div>
+                        <div className={s.usersWrapper}>
 
-                    </div>
-                </div>
+                            {arrayUser}
 
-                <div className={s.messageWrapper}>
-                    <div className={s.usersMessageTitle}>Users Messages</div>
-                    <div className={s.usersMessageWrapper}>
-
-                        {arrayMessages}
-                        <textarea ref={newPostMessage} onChange={onMessageChange} value={props.newMessageText}/>
-                        <div>
-                            <button onClick={addMessage}>send message</button>
                         </div>
+                    </div>
 
+                    <div className={s.messageWrapper}>
+                        <div className={s.usersMessageTitle}>Users Messages</div>
+                        <div className={s.usersMessageWrapper}>
+
+                            {arrayMessages}
+                            <textarea ref={newPostMessage} onChange={onMessageChange} value={props.newMessageText}/>
+                            <div>
+                                <button onClick={addMessage}>send message</button>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-            </div>
+
         </BrowserRouter>)
 
 }

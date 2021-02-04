@@ -1,6 +1,7 @@
 .musicWrapper {
-    background-color: #facded;
-    grid-column: 3/13;
+    background-image: url(https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    grid-column: 2/4;
+    background-size: 100%;
 }
 
 .musicTitle {

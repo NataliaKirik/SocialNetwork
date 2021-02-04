@@ -20,4 +20,5 @@ const MainContainer = (props: MainContainerPropsType) => {
     return (<Main updateNewPostText={onPostChange} addPost={addPost}   dataMain={state.mainPage.posts}
                   newPostText={state.mainPage.newPostText}/>)
 }
+
 export default MainContainer

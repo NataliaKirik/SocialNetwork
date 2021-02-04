@@ -1,22 +1,19 @@
-.navBarWrapper{
-    background-color: lightpink;
-    font-size: large;
-    color: white;
-    font-weight: bold;
+.navBarWrapper {
+    background-color: #c4deff;
+    grid-column: 1/2;
     display: grid;
-    grid-template-rows: 40px 40px 40px 40px 40px 40px;
-
-    grid-column: 1/3;
-    border-right: 3px solid #0b3788;
-    border-top: 2px solid #0b3788;
-
+    grid-template-rows:60px 60px 60px 60px 60px 60px;
+    padding: 20px 0 0 20px;
 }
 
-.navBarWrapper a{
+.navBarWrapper a {
+    font-family:'Potta One', cursive;
+    font-size: 20px;
+    font-weight: bold;
     color: white;
     text-decoration: none;
-    margin-left: 20px;
 }
-.navBarWrapper a.activeLink{
+
+.navBarWrapper a.activeLink {
     color: #0b3788;
 }

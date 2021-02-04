@@ -6,7 +6,7 @@ import {PostsType} from "../../../Redux/store";
 const Post: React.FC<PostsType> = (props) => {
     return (<div className={s.postsWrapper}>
         <div>
-            <img src="https://i.pinimg.com/originals/0c/a9/e2/0ca9e28dcb12dc698cfd2beda6d6fa64.jpg" alt=""
+            <img src="https://www.meme-arsenal.com/memes/5eae5104f379baa355e031fa1ded886c.jpg" alt=""
                  className={s.imgInPost}/>
         </div>
 

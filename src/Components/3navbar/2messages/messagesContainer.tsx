@@ -22,4 +22,5 @@ const MessagesСontainer = (props:MessagesContainerPropsType) => {
                       newMessageText={state.messagePage.newMessageText}/>)
 
 }
+
 export default MessagesСontainer
