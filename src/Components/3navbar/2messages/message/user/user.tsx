@@ -1,7 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import s from './user.module.css'
-import {usersMessagesType} from "../../../../../Redux/store";
+import {usersMessagesType} from "../../../../../Redux/oldStore_Types";
 
 
 const User: React.FC<usersMessagesType> = (props) => {

@@ -1,11 +1,10 @@
 import React from "react";
 import Messages from "./messages";
 import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../Redux/messages_Reducer";
-import {DispatchActionType} from "../../2main/main";
 
 type MessagesContainerPropsType={
     store:any
-    dispatch:(action: DispatchActionType) => void
+    dispatch:(action: any) => void
 }
 
 const MessagesСontainer = (props:MessagesContainerPropsType) => {

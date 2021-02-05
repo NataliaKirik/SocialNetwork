@@ -2,7 +2,7 @@ import messagesReducer from "./messages_Reducer";
 import mainReducer from "./main_Reducer";
 import friendsLittlePageReducer from "./friendsLittlePage_Reducer";
 
-export let store: StoreType = {
+let oldStore: StoreType = {
     _state: {
         mainPage: {
             posts: [
@@ -98,8 +98,8 @@ export type messagePageType = {
     usersMessages: Array<usersMessagesType>
     messages: Array<MessagesType>
     newMessageText: string
-
 }
+
 
 
 

@@ -1,24 +1,27 @@
 import React from "react";
-import Main, {DispatchActionType} from "./main";
+import Main from "./main";
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../Redux/main_Reducer";
+import {RootStateType} from "../../Redux/oldStore_Types";
+import {connect} from "react-redux";
 
-type MainContainerPropsType = {
-    store: any
-    dispatch: (action: DispatchActionType) => void
-}
-const MainContainer = (props: MainContainerPropsType) => {
-    let state = props.store.getState()
-    const addPost = () => {
-        props.store.dispatch(addPostActionCreator())
+
+const mapStateToProps = (state: RootStateType) => {
+    return {
+        dataMain: state.mainPage
     }
-
-    let onPostChange = (text?:string) => {
-        let action = updateNewPostTextActionCreator(text)
-        props.store.dispatch(action)
-    }
-
-    return (<Main updateNewPostText={onPostChange} addPost={addPost}   dataMain={state.mainPage.posts}
-                  newPostText={state.mainPage.newPostText}/>)
 }
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        updateNewPostText: (text?: string) => {
+            updateNewPostTextActionCreator(text)
+        },
+        addPost: () => {
+            dispatch(addPostActionCreator())
+        }
+    }
+}
+
+
+const MainContainer = connect(mapStateToProps, mapDispatchToProps)(Main)
 
 export default MainContainer

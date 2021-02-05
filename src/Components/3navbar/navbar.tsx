@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 
 
 
-const Navbar = (props:any) => {
+const Navbar = () => {
     return (
         <div className={s.navBarWrapper}>
             <div><NavLink to={'/Main'} activeClassName={s.activeLink}>Main</NavLink></div>

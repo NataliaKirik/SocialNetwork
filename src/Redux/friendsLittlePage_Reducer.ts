@@ -1,4 +1,4 @@
-import {friendsLittlePageType} from "./store";
+import {friendsLittlePageType} from "./oldStore_Types";
 
 let InitialState: friendsLittlePageType = {
     friends: [

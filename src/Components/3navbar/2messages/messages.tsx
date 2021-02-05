@@ -6,9 +6,8 @@ import Message from "./message/usersMessage/message";
 import {
     MessagesType,
     usersMessagesType
-} from "../../../Redux/store";
-import {DispatchActionType} from "../../2main/main";
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../Redux/messages_Reducer";
+} from "../../../Redux/oldStore_Types";
+
 
 type MessagesProps = {
     dataUsersMessages: Array<usersMessagesType>
