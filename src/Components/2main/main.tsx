@@ -7,8 +7,6 @@ type MainProps = {
     dataMain: mainPageType
     updateNewPostText: (text?: string) => void
     addPost: () => void
-    state: RootStateType
-    dispatch: any
 }
 
 const Main = (props: MainProps) => {
