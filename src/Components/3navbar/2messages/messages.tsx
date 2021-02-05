@@ -4,26 +4,26 @@ import {BrowserRouter} from "react-router-dom";
 import User from "./message/user/user";
 import Message from "./message/usersMessage/message";
 import {
+    messagePageType,
     MessagesType,
     usersMessagesType
 } from "../../../Redux/oldStore_Types";
 
 
 type MessagesProps = {
-    dataUsersMessages: Array<usersMessagesType>
-    arrayMessage: Array<MessagesType>
+    dataMessagePage: messagePageType
     addMessage: () => void
     messageChange: (text?: string) => void
-    newMessageText?: string
+
 }
 
-const Messages: React.FC<MessagesProps> = (props) => {
-    let arrayUser = props.dataUsersMessages.map(
+const Messages = (props: MessagesProps) => {
+    let arrayUser = props.dataMessagePage.usersMessages.map(
         (user: usersMessagesType) => {
             return (<div className={s.user}><User title={user.title} id={user.id}/></div>)
         }
     )
-    let arrayMessages = props.arrayMessage.map(
+    let arrayMessages = props.dataMessagePage.messages.map(
         (message: MessagesType) => {
             return (<div className={s.message}><Message title={message.title} id={message.id}/></div>)
         }
@@ -41,29 +41,30 @@ const Messages: React.FC<MessagesProps> = (props) => {
     return (
         <BrowserRouter>
 
-                <div className={s.MessageMainWrapper}>
-                    <div className={s.dialogsUsersWrapper}>
-                        <div className={s.message_Title}>Users Dialogs</div>
-                        <div className={s.usersWrapper}>
+            <div className={s.MessageMainWrapper}>
+                <div className={s.dialogsUsersWrapper}>
+                    <div className={s.message_Title}>Users Dialogs</div>
+                    <div className={s.usersWrapper}>
 
-                            {arrayUser}
+                        {arrayUser}
 
-                        </div>
-                    </div>
-
-                    <div className={s.messageWrapper}>
-                        <div className={s.usersMessageTitle}>Users Messages</div>
-                        <div className={s.usersMessageWrapper}>
-
-                            {arrayMessages}
-                            <textarea ref={newPostMessage} onChange={onMessageChange} value={props.newMessageText}/>
-                            <div>
-                                <button onClick={addMessage}>send message</button>
-                            </div>
-
-                        </div>
                     </div>
                 </div>
+
+                <div className={s.messageWrapper}>
+                    <div className={s.usersMessageTitle}>Users Messages</div>
+                    <div className={s.usersMessageWrapper}>
+
+                        {arrayMessages}
+                        <textarea ref={newPostMessage} onChange={onMessageChange}
+                                  value={props.dataMessagePage.newMessageText}/>
+                        <div>
+                            <button onClick={addMessage}>send message</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
         </BrowserRouter>)
 

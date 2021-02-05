@@ -1,25 +1,27 @@
 import React from "react";
 import Messages from "./messages";
 import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../Redux/messages_Reducer";
+import {connect} from "react-redux";
+import {RootStateType} from "../../../Redux/oldStore_Types";
 
-type MessagesContainerPropsType={
-    store:any
-    dispatch:(action: any) => void
-}
 
-const MessagesСontainer = (props:MessagesContainerPropsType) => {
-    let state = props.store.getState()
-    const addMessage = () => {
-        props.store.dispatch(addMessageActionCreator())
+const mapStateToProps = (state: RootStateType) => {
+    return {
+        dataMessagePage:state.messagePage
     }
 
-    let messageChange = (text?: string) => {
-        props.store.dispatch(updateNewMessageTextActionCreator(text))
+}
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        addMessage: () => {
+            dispatch(addMessageActionCreator())
+        },
+        messageChange: (text?: string) => {
+            dispatch(updateNewMessageTextActionCreator(text))
+        }
     }
-    return (<Messages addMessage={addMessage} messageChange={messageChange}
-                      dataUsersMessages={state.messagePage.usersMessages} arrayMessage={state.messagePage.messages}
-                      newMessageText={state.messagePage.newMessageText}/>)
-
 }
 
-export default MessagesСontainer
+const MessageContainer = connect(mapStateToProps, mapDispatchToProps)(Messages)
+
+export default MessageContainer

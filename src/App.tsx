@@ -9,6 +9,7 @@ import Music from "./Components/3navbar/4music/music";
 import Settings from "./Components/3navbar/5settings/settings";
 import {Route} from "react-router-dom";
 import MainContainer from "./Components/2main/main_Container";
+import MessageContainer from './Components/3navbar/2messages/messagesContainer';
 
 
 function App() {
@@ -18,8 +19,7 @@ function App() {
             <Navbar/>
             <Route render={() => <MainContainer/>} path={'/Main'}/>
             <Route render={() => <Profile/>} path={'/Profile'}/>
-            {/*<Route render={() => <MessagesСontainer store={props.store}*/}
-            {/*                                        dispatch={props.store.dispatch}/>} path={'/Message'}/>*/}
+            <Route render={() => <MessageContainer/>} path={'/Message'}/>
             <Route render={() => <News/>} path={'/News'}/>
             <Route render={() => <Music/>} path={'/Music'}/>
             <Route render={() => <Settings/>} path={'/Settings'}/>
