@@ -3,7 +3,7 @@ import Main from "./main";
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../Redux/main_Reducer";
 import {RootStateType} from "../../Redux/oldStore_Types";
 import {connect} from "react-redux";
-import {AppDispatchType} from "../../Redux/redux-store";
+import {Dispatch} from "redux";
 
 
 const mapStateToProps = (state: RootStateType) => {
@@ -11,10 +11,10 @@ const mapStateToProps = (state: RootStateType) => {
         dataMain: state.mainPage
     }
 }
-const mapDispatchToProps = (dispatch: AppDispatchType) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        updateNewPostText: (text?: string) => {
-            updateNewPostTextActionCreator(text)
+        updateNewPostText: (text: string) => {
+            dispatch(updateNewPostTextActionCreator(text))
         },
         addPost: () => {
             dispatch(addPostActionCreator())

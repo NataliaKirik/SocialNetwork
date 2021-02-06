@@ -1,3 +1,8 @@
+type actionType = {
+    type: 'ADD_MESSAGE' | 'UPDATE_NEW_MESSAGE_TEXT'
+    newText: string
+}
+
 let initialState = {
     usersMessages: [
         {id: 1, title: 'Igor Petrov'},
@@ -16,19 +21,23 @@ let initialState = {
     newMessageText: ''
 }
 
-const messagesReducer = (state = initialState, action: any) => {
+const messagesReducer = (state = initialState, action: actionType) => {
+    let stateCopy = {...state}
     switch (action.type) {
-        case 'ADD_MESSAGE':
+        case 'ADD_MESSAGE': {
             let newMessage = {
                 id: 6,
                 title: state.newMessageText
             }
-            state.messages.push(newMessage)
-            state.newMessageText = ''
-            return state
-        case'UPDATE_NEW_MESSAGE_TEXT':
-            state.newMessageText = action.newText
-            return state
+
+            stateCopy.messages.push(newMessage)
+            stateCopy.newMessageText = ''
+            return stateCopy
+        }
+        case'UPDATE_NEW_MESSAGE_TEXT': {
+            stateCopy.newMessageText = action.newText
+            return stateCopy
+        }
         default:
             return state
     }

@@ -8,11 +8,11 @@ import {AppDispatchType} from "../../../Redux/redux-store";
 
 const mapStateToProps = (state: RootStateType) => {
     return {
-        dataMessagePage:state.messagePage
+        dataMessagePage: state.messagePage
     }
 
 }
-const mapDispatchToProps = (dispatch: AppDispatchType) => {
+const mapDispatchToProps = (dispatch: any) => {
     return {
         addMessage: () => {
             dispatch(addMessageActionCreator())

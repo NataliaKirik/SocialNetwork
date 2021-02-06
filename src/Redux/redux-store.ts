@@ -1,16 +1,15 @@
 import {combineReducers, createStore} from "redux";
 import messagesReducer from "./messages_Reducer";
 import mainReducer from "./main_Reducer";
-import friendsLittlePageReducer from "./friendsLittlePage_Reducer";
+export type AppDispatchType = typeof store.dispatch
 
 
 let reducers = combineReducers({
     messagePage: messagesReducer,
-    mainPage: mainReducer,
-    friendsLittlePage:friendsLittlePageReducer
+    mainPage: mainReducer
 });
 let store = createStore(reducers);
 
 
-export type AppDispatchType = typeof store.dispatch
+
 export default store;

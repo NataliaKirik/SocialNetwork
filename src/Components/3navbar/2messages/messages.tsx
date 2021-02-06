@@ -10,22 +10,22 @@ import {
 } from "../../../Redux/oldStore_Types";
 
 
-type MessagesProps = {
-    dataMessagePage: messagePageType
-    addMessage: () => void
-    messageChange: (text?: string) => void
+// type MessagesProps = {
+//     dataMessagePage: messagePageType
+//     addMessage: () => void
+//     messageChange: (text?: string) => void
+//
+// }
 
-}
-
-const Messages = (props: MessagesProps) => {
+const Messages = (props: any) => {
     let arrayUser = props.dataMessagePage.usersMessages.map(
         (user: usersMessagesType) => {
-            return (<div className={s.user}><User title={user.title} id={user.id}/></div>)
+            return (<div className={s.user}><User title={user.title} id={user.id} key={user.id}/></div>)
         }
     )
     let arrayMessages = props.dataMessagePage.messages.map(
         (message: MessagesType) => {
-            return (<div className={s.message}><Message title={message.title} id={message.id}/></div>)
+            return (<div className={s.message}><Message title={message.title} id={message.id} key={message.id}/></div>)
         }
     )
 
