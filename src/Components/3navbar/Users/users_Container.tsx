@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import Users from "./Users";
 import {Dispatch} from "redux";
-import {usersState} from "../../../Redux/users_Reduser";
+import {usersStateType, userType} from "../../../Redux/users_Reduser";
 
 const onButtonFollowAC = (userId: number) => {
     return {
@@ -10,8 +10,9 @@ const onButtonFollowAC = (userId: number) => {
         id: userId
     }
 }
+const setUsersAC = (users:Array<userType>) => ({type: 'SET_USERS', users})
 
-const mapStateToProps = (state: usersState) => {
+const mapStateToProps = (state: usersStateType) => {
     return {
         users: state.usersPage.users
     }
@@ -20,6 +21,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         onFollowButtonClick: (userId: number) => {
             dispatch(onButtonFollowAC(userId))
+        },
+        setUsers: (users: Array<userType>) => {
+            dispatch(setUsersAC(users))
         }
     }
 }

@@ -1,11 +1,12 @@
 type actionType = {
-    type: 'TOGGLE_FOLLOW'
+    type: 'TOGGLE_FOLLOW' | 'SET_USERS'
     id: number
+    users: Array<userType>
 }
-export type usersState = {
-    usersPage: users
+export type usersStateType = {
+    usersPage: usersType
 }
-export type users = {
+export type usersType = {
     users: Array<userType>
 }
 export type userType = {
@@ -21,41 +22,20 @@ export type locationType = {
     country: string
 }
 
+
 let initialState = {
-    users: [
-        {
-            id: 1,
-            name: 'Dmitry K',
-            imgUrl: 'https://www.meme-arsenal.com/memes/5eae5104f379baa355e031fa1ded886c.jpg',
-            status: 'i am so pretty',
-            followed: true,
-            location: {city: 'Minsk', country: 'Belarus'}
-        },
-        {
-            id: 2,
-            name: 'Svetlana D',
-            imgUrl: 'https://www.meme-arsenal.com/memes/5eae5104f379baa355e031fa1ded886c.jpg',
-            status: 'i am so pretty too',
-            followed: true,
-            location: {city: 'Minsk', country: 'Belarus'}
-        },
-        {
-            id: 3,
-            name: 'Sergey S',
-            imgUrl: 'https://www.meme-arsenal.com/memes/5eae5104f379baa355e031fa1ded886c.jpg',
-            status: 'i like football',
-            followed: false,
-            location: {city: 'Kiev', country: 'Ukrane'}
-        }
-    ]
+    users: []
 }
 
-const usersReducer = (state = initialState, action: actionType) => {
+const usersReducer = (state: usersType = initialState, action: actionType) => {
     switch (action.type) {
+        case 'SET_USERS': {
+            return {...state, users: [...state.users, ...action.users]}
+        }
         case 'TOGGLE_FOLLOW':
             return {
                 ...state,
-                users: state.users.map(u => {
+                users: state.users.map((u) => {
                     if (u.id === action.id) {
                         return {...u, followed: !u.followed}
                     } else {
@@ -63,6 +43,7 @@ const usersReducer = (state = initialState, action: actionType) => {
                     }
                 })
             }
+
         default:
             return state
     }
