@@ -1,10 +1,14 @@
 import React from "react";
 import Messages from "./messages";
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../Redux/messages_Reducer";
 import {connect} from "react-redux";
 import {RootStateType} from "../../../Redux/oldStore_Types";
-import {AppDispatchType} from "../../../Redux/redux-store";
+import {Dispatch} from "redux";
 
+const addMessageActionCreator = () => ({type: 'ADD_MESSAGE'})
+const updateNewMessageTextActionCreator = (text: string) => ({
+    type: 'UPDATE_NEW_MESSAGE_TEXT',
+    newText: text
+})
 
 const mapStateToProps = (state: RootStateType) => {
     return {
@@ -12,12 +16,12 @@ const mapStateToProps = (state: RootStateType) => {
     }
 
 }
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         addMessage: () => {
             dispatch(addMessageActionCreator())
         },
-        messageChange: (text?: string) => {
+        messageChange: (text: string) => {
             dispatch(updateNewMessageTextActionCreator(text))
         }
     }

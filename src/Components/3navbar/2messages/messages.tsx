@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import s from './messages.module.css'
 import {BrowserRouter} from "react-router-dom";
 import User from "./message/user/user";
@@ -10,14 +10,14 @@ import {
 } from "../../../Redux/oldStore_Types";
 
 
-// type MessagesProps = {
-//     dataMessagePage: messagePageType
-//     addMessage: () => void
-//     messageChange: (text?: string) => void
-//
-// }
+type MessagesProps = {
+    dataMessagePage: messagePageType
+    addMessage: () => void
+    messageChange: (text: string) => void
 
-const Messages = (props: any) => {
+}
+
+const Messages = (props: MessagesProps) => {
     let arrayUser = props.dataMessagePage.usersMessages.map(
         (user: usersMessagesType) => {
             return (<div className={s.user}><User title={user.title} id={user.id} key={user.id}/></div>)
@@ -29,13 +29,12 @@ const Messages = (props: any) => {
         }
     )
 
-    let newPostMessage = React.createRef<HTMLTextAreaElement>()
     const addMessage = () => {
         props.addMessage()
     }
 
-    let onMessageChange = () => {
-        let text = newPostMessage.current?.value
+    let onMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        let text = e.currentTarget.value
         props.messageChange(text)
     }
     return (
@@ -56,7 +55,7 @@ const Messages = (props: any) => {
                     <div className={s.usersMessageWrapper}>
 
                         {arrayMessages}
-                        <textarea ref={newPostMessage} onChange={onMessageChange}
+                        <textarea onChange={onMessageChange}
                                   value={props.dataMessagePage.newMessageText}/>
                         <div>
                             <button onClick={addMessage}>send message</button>

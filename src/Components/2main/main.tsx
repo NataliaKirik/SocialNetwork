@@ -18,13 +18,11 @@ const Main = (props: MainProps) => {
         )
     ]
 
-    let newPostElement = React.createRef<HTMLTextAreaElement>()
     const onAddPost = () => {
         props.addPost()
     }
 
     let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        debugger
         let text = e.currentTarget.value
         props.updateNewPostText(text)
     }

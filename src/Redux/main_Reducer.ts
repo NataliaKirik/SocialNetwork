@@ -5,12 +5,6 @@ type actionType = {
     newText: string
 }
 
-export const addPostActionCreator = () => ({type: 'ADD_POST'})
-export const updateNewPostTextActionCreator = (text?: string) => ({
-    type: 'UPDATE_NEW_POST_TEXT',
-    newText: text
-})
-
 let initialState: mainPageType = {
     posts: [
         {id: 1, title: 'Hello', likesCount: 15, name: 'Igor Petrov'},
@@ -21,9 +15,12 @@ let initialState: mainPageType = {
 }
 
 const mainReducer = (state = initialState, action: actionType) => {
-    debugger
-    let stateCopy = {...state}
     switch (action.type) {
+        case 'UPDATE_NEW_POST_TEXT':
+            return {
+                ...state,
+                newPostText: action.newText
+            }
         case 'ADD_POST': {
             let newPost = {
                 id: 5,
@@ -31,17 +28,15 @@ const mainReducer = (state = initialState, action: actionType) => {
                 likesCount: 10,
                 name: 'Brand Nesterov'
             }
-            stateCopy.posts.push(newPost)
-            stateCopy.newPostText = ''
-            return stateCopy
+            return {
+                ...state,
+                newPostText: '',
+                posts: [...state.posts, newPost]
+            }
         }
-        case 'UPDATE_NEW_POST_TEXT':
-            stateCopy.newPostText = action.newText
-            return stateCopy
         default:
             return state
     }
 }
-
 
 export default mainReducer

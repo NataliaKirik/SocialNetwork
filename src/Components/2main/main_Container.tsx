@@ -1,10 +1,14 @@
 import React from "react";
 import Main from "./main";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../Redux/main_Reducer";
 import {RootStateType} from "../../Redux/oldStore_Types";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 
+const addPostActionCreator = () => ({type: 'ADD_POST'})
+ const updateNewPostTextActionCreator = (text: string) => ({
+    type: 'UPDATE_NEW_POST_TEXT',
+    newText: text
+})
 
 const mapStateToProps = (state: RootStateType) => {
     return {

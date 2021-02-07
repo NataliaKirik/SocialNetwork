@@ -10,6 +10,7 @@ import Settings from "./Components/3navbar/5settings/settings";
 import {Route} from "react-router-dom";
 import MainContainer from "./Components/2main/main_Container";
 import MessageContainer from './Components/3navbar/2messages/messagesContainer';
+import UsersContainer from "./Components/3navbar/Users/users_Container";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Navbar/>
             <Route render={() => <MainContainer/>} path={'/Main'}/>
             <Route render={() => <Profile/>} path={'/Profile'}/>
+            <Route render={() => <UsersContainer/>} path={'/Users'}/>
             <Route render={() => <MessageContainer/>} path={'/Message'}/>
             <Route render={() => <News/>} path={'/News'}/>
             <Route render={() => <Music/>} path={'/Music'}/>
