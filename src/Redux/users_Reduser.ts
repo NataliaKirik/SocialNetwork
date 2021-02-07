@@ -12,7 +12,7 @@ export type usersType = {
 export type userType = {
     id: number
     name: string
-    imgUrl: string
+    photos: any
     status: string
     followed: boolean
     location: locationType
