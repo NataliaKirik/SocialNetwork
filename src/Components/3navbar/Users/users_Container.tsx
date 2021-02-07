@@ -12,7 +12,7 @@ const onButtonFollowAC = (userId: number) => {
 }
 
 const mapStateToProps = (state: usersState) => {
-    debugger
+
     return {
         users: state.usersPage.users
     }

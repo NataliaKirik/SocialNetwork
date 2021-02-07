@@ -26,7 +26,7 @@ let initialState = {
         {
             id: 1,
             name: 'Dmitry K',
-            imgUrl: 'https://lh3.googleusercontent.com/proxy/RMbjOPjLUVO6WP_4st2jNjOMPGg2k-aLwiylwJAxgxQyjZ2SNoFk4-hVSM85a9OrD14CUJaIV-kBTaT9J1dnjXAbs7z0H8WLJomBNmXk8Spa5JCBKrUfRmy94ap7Z5zDK-UDirQ',
+            imgUrl: 'https://www.meme-arsenal.com/memes/5eae5104f379baa355e031fa1ded886c.jpg',
             status: 'i am so pretty',
             followed: true,
             location: {city: 'Minsk', country: 'Belarus'}
@@ -34,7 +34,7 @@ let initialState = {
         {
             id: 2,
             name: 'Svetlana D',
-            imgUrl: 'http://sun9-40.userapi.com/fV8ZUe8VzV6xiBzbtV_-seyxNN2B21Rl8pMyjQ/svnsrqZXvJg.jpg',
+            imgUrl: 'https://www.meme-arsenal.com/memes/5eae5104f379baa355e031fa1ded886c.jpg',
             status: 'i am so pretty too',
             followed: true,
             location: {city: 'Minsk', country: 'Belarus'}
@@ -42,7 +42,7 @@ let initialState = {
         {
             id: 3,
             name: 'Sergey S',
-            imgUrl: 'https://lh3.googleusercontent.com/proxy/RMbjOPjLUVO6WP_4st2jNjOMPGg2k-aLwiylwJAxgxQyjZ2SNoFk4-hVSM85a9OrD14CUJaIV-kBTaT9J1dnjXAbs7z0H8WLJomBNmXk8Spa5JCBKrUfRmy94ap7Z5zDK-UDirQ',
+            imgUrl: 'https://www.meme-arsenal.com/memes/5eae5104f379baa355e031fa1ded886c.jpg',
             status: 'i like football',
             followed: false,
             location: {city: 'Kiev', country: 'Ukrane'}
@@ -52,12 +52,17 @@ let initialState = {
 
 const usersReducer = (state = initialState, action: actionType) => {
     switch (action.type) {
-        case 'TOGGLE_FOLLOW': {
-            let stateCopy = {...state}
-            return stateCopy.users.map((u) => {
-                u.id === action.id ? alert('true') : alert('false')
-            })
-        }
+        case 'TOGGLE_FOLLOW':
+            return {
+                ...state,
+                users: state.users.map(u => {
+                    if (u.id === action.id) {
+                        return {...u, followed: !u.followed}
+                    } else {
+                        return {...u, followed: u.followed}
+                    }
+                })
+            }
         default:
             return state
     }
