@@ -3,3 +3,12 @@
     grid-column: 2/4;
     background-size: 100%;
 }
+
+.usersWrapper {
+    border: red 1px solid;
+    padding: 5px;
+}
+
+.map {
+    border: green 3px solid;
+}
