@@ -1,14 +1,11 @@
-.profileWrapper {
-    background-image: url(https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
-    grid-column: 2/4;
-    background-size: 100%;
-}
-
-.usersWrapper {
-    border: red 1px solid;
-    padding: 5px;
-}
+/*.usersWrapper {*/
+/*    background-image: url(https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);*/
+/*    grid-column: 2/4;*/
+/*    background-size: 100%;*/
+/*}*/
 
 .map {
     border: green 3px solid;
+    width: 300px;
+
 }

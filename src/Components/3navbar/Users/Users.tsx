@@ -1,6 +1,5 @@
 import React from "react";
 import s from './Users.module.css'
-import {User} from "./user";
 import {userType} from "../../../Redux/users_Reduser";
 import axios from "axios";
 
@@ -10,8 +9,9 @@ type UsersPropsType = {
     setUsers: (users: Array<userType>) => void
 }
 
-const Users = (props: UsersPropsType) => {
-    if (props.users.length === 0) {
+class Users extends React.Component<UsersPropsType> {
+    constructor(props: UsersPropsType) {
+        super(props);
         // props.setUsers([
         //     {
         //         id: 1,
@@ -38,35 +38,37 @@ const Users = (props: UsersPropsType) => {
         //         location: {city: 'Kiev', country: 'Ukrane'}
         //     }
         // ])
-
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
                 props.setUsers(response.data.items)
             }
         )
     }
 
-
-    let user = [
-        props.users.map((u) => {
-            return (
-                <div className={s.map}>
-                    <User
-                        img={u.photos.small || 'https://www.meme-arsenal.com/memes/5eae5104f379baa355e031fa1ded886c.jpg'}
-                        name={u.name} status={u.status}
-                        location={'location.city'} key={u.id}/>
-                    <button onClick={() => {
-                        props.onFollowButtonClick(u.id)
-                    }}>{u.followed ? 'Followed' : 'Unfollowed'}</button>
-                </div>
-            )
-
-        })
-    ]
-    return (
-        <div className={s.usersWrapper}>
-            {user}
-        </div>
-    )
+    render() {
+        return (
+            <div className={s.usersWrapper}>
+                {
+                    this.props.users.map(
+                        (u: userType) => {
+                            debugger
+                            return (
+                                <div key={u.id}>
+                                    <img
+                                        src={u.photos.small || 'https://www.meme-arsenal.com/memes/5eae5104f379baa355e031fa1ded886c.jpg'}
+                                        alt={'ava'}/>
+                                    <div>{u.name}</div>
+                                    <div>{u.status}</div>
+                                    <div>{'location.city'}</div>
+                                    <button onClick={() => {
+                                        this.props.onFollowButtonClick(u.id)
+                                    }}>{u.followed ? 'Followed' : 'Unfollowed'}</button>
+                                </div>
+                            )
+                        }
+                    )
+                }
+            </div>)
+    }
 }
 
 

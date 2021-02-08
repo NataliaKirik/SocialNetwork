@@ -1,8 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
-import Users from "./Users";
 import {Dispatch} from "redux";
 import {usersStateType, userType} from "../../../Redux/users_Reduser";
+import Users from "./Users";
 
 const onButtonFollowAC = (userId: number) => {
     return {
