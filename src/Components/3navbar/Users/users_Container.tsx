@@ -10,11 +10,16 @@ const onButtonFollowAC = (userId: number) => {
         id: userId
     }
 }
-const setUsersAC = (users:Array<userType>) => ({type: 'SET_USERS', users})
+const setUsersAC = (users: Array<userType>) => ({type: 'SET_USERS', users})
+const setCurrentPageAC = (currentPage: number) => ({type: 'SET_CURRENT_PAGE', currentPage})
+let setTotalUsersCountAC = (totalCount: number) => ({type: 'SET_TOTAL_USERS_COUNT', totalCount})
 
 const mapStateToProps = (state: usersStateType) => {
     return {
-        users: state.usersPage.users
+        users: state.usersPage.users,
+        pageSize: state.usersPage.pageSize,
+        totalUsersCount: state.usersPage.totalUsersCount,
+        currentPage: state.usersPage.currentPage
     }
 }
 const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -24,7 +29,14 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         },
         setUsers: (users: Array<userType>) => {
             dispatch(setUsersAC(users))
+        },
+        getPageNumber: (pageNumber: number) => {
+            dispatch(setCurrentPageAC(pageNumber))
+        },
+        setTotalUsersCount: (totalCount: number) => {
+            dispatch(setTotalUsersCountAC(totalCount))
         }
+
     }
 }
 

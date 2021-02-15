@@ -1,13 +1,19 @@
 type actionType = {
-    type: 'TOGGLE_FOLLOW' | 'SET_USERS'
+    type: 'TOGGLE_FOLLOW' | 'SET_USERS' | 'SET_CURRENT_PAGE' | 'SET_TOTAL_USERS_COUNT'
     id: number
     users: Array<userType>
+    currentPage: number
+    totalCount: number
 }
 export type usersStateType = {
     usersPage: usersType
 }
 export type usersType = {
     users: Array<userType>
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
+
 }
 export type userType = {
     id: number
@@ -24,13 +30,17 @@ export type locationType = {
 
 
 let initialState = {
-    users: []
+    users: [],
+    currentPage: 1,
+    pageSize: 5,
+    totalUsersCount: 0
+
 }
 
 const usersReducer = (state: usersType = initialState, action: actionType) => {
     switch (action.type) {
         case 'SET_USERS': {
-            return {...state, users: [...state.users, ...action.users]}
+            return {...state, users: action.users}
         }
         case 'TOGGLE_FOLLOW':
             return {
@@ -43,7 +53,16 @@ const usersReducer = (state: usersType = initialState, action: actionType) => {
                     }
                 })
             }
-
+        case 'SET_CURRENT_PAGE':
+            return {
+                ...state,
+                currentPage: action.currentPage
+            }
+        case 'SET_TOTAL_USERS_COUNT':
+            return {
+                ...state,
+                totalUsersCount: action.totalCount
+            }
         default:
             return state
     }
