@@ -2,7 +2,7 @@ import React from "react";
 import {userType} from "../../../Redux/users_Reduser";
 import axios from "axios";
 import {Users} from "./Users";
-import {RootStore} from "../../../Redux/redux-store";
+import {RootState} from "../../../Redux/redux-store";
 import {Preloader} from "../../../common/Preloader";
 
 type UsersPropsType = {
@@ -18,7 +18,7 @@ type UsersPropsType = {
     isFetching: boolean
 }
 
-class UsersAPIContainer extends React.Component<UsersPropsType, RootStore> {
+class UsersAPIContainer extends React.Component<UsersPropsType, RootState> {
 
     componentDidMount() {
         this.props.setToggleIsFetching(true)

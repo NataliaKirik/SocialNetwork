@@ -1,8 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
-import {usersStateType, userType} from "../../../Redux/users_Reduser";
+import {userType} from "../../../Redux/users_Reduser";
 import UsersAPIContainer from "./UsersAPIContainer";
+import {RootState} from "../../../Redux/redux-store";
 
 const onFollowButtonClick = (userId: number) => {
     return {
@@ -15,7 +16,7 @@ const getPageNumber = (currentPage: number) => ({type: 'SET_CURRENT_PAGE', curre
 const setTotalUsersCount = (totalCount: number) => ({type: 'SET_TOTAL_USERS_COUNT', totalCount})
 const setToggleIsFetching = (isFetching: boolean) => ({type: 'TOGGLE_IS_FETCHING', isFetching})
 
-const mapStateToProps = (state: usersStateType) => {
+const mapStateToProps = (state: RootState) => {
     return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,

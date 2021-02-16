@@ -2,15 +2,18 @@ import {combineReducers, createStore} from "redux";
 import messagesReducer from "./messages_Reducer";
 import mainReducer from "./main_Reducer";
 import usersReducer from "./users_Reduser";
+import {profileReducer} from "./profileReducer";
 
+export type RootState = ReturnType<typeof reducers>
+export type StoreReduxType = typeof store
 
-let reducers = combineReducers({
+const reducers = combineReducers({
     messagePage: messagesReducer,
     mainPage: mainReducer,
-    usersPage: usersReducer
+    usersPage: usersReducer,
+    profilePage: profileReducer,
 });
 
-export type RootStore = ReturnType<typeof reducers>
 
 let store = createStore(reducers);
 

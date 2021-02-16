@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./Users.module.css";
 import {userType} from "../../../Redux/users_Reduser";
+import {NavLink} from "react-router-dom";
 
 type usersPropsType = {
     pageSize: number
@@ -34,9 +35,11 @@ export function Users(props: usersPropsType) {
                     (u: userType) => {
                         return (
                             <div key={u.id} className={s.map}>
-                                <img
-                                    src={u.photos.small || 'https://www.meme-arsenal.com/memes/5eae5104f379baa355e031fa1ded886c.jpg'}
-                                    alt={'ava'} className={s.ava}/>
+                                <NavLink to={'/Profile/' + u.id}>
+                                    <img
+                                        src={u.photos.small || 'https://www.meme-arsenal.com/memes/5eae5104f379baa355e031fa1ded886c.jpg'}
+                                        alt={'ava'} className={s.ava}/>
+                                </NavLink>
                                 <div>{u.name}</div>
                                 <div>{u.status}</div>
                                 <div>{'location.city'}</div>
