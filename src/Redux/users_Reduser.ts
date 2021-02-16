@@ -1,9 +1,10 @@
 type actionType = {
-    type: 'TOGGLE_FOLLOW' | 'SET_USERS' | 'SET_CURRENT_PAGE' | 'SET_TOTAL_USERS_COUNT'
+    type: 'TOGGLE_FOLLOW' | 'SET_USERS' | 'SET_CURRENT_PAGE' | 'SET_TOTAL_USERS_COUNT' | 'TOGGLE_IS_FETCHING'
     id: number
     users: Array<userType>
     currentPage: number
     totalCount: number
+    isFetching: boolean
 }
 export type usersStateType = {
     usersPage: usersType
@@ -13,6 +14,7 @@ export type usersType = {
     pageSize: number
     totalUsersCount: number
     currentPage: number
+    isFetching: boolean
 
 }
 export type userType = {
@@ -33,7 +35,8 @@ let initialState = {
     users: [],
     currentPage: 1,
     pageSize: 5,
-    totalUsersCount: 0
+    totalUsersCount: 0,
+    isFetching: true
 
 }
 
@@ -63,6 +66,12 @@ const usersReducer = (state: usersType = initialState, action: actionType) => {
                 ...state,
                 totalUsersCount: action.totalCount
             }
+        case 'TOGGLE_IS_FETCHING':
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
+
         default:
             return state
     }

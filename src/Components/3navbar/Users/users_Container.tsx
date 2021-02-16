@@ -12,14 +12,16 @@ const onButtonFollowAC = (userId: number) => {
 }
 const setUsersAC = (users: Array<userType>) => ({type: 'SET_USERS', users})
 const setCurrentPageAC = (currentPage: number) => ({type: 'SET_CURRENT_PAGE', currentPage})
-let setTotalUsersCountAC = (totalCount: number) => ({type: 'SET_TOTAL_USERS_COUNT', totalCount})
+const setTotalUsersCountAC = (totalCount: number) => ({type: 'SET_TOTAL_USERS_COUNT', totalCount})
+const toggleFetching = (isFetching: boolean) => ({type: 'TOGGLE_IS_FETCHING', isFetching})
 
 const mapStateToProps = (state: usersStateType) => {
     return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage
+        currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching
     }
 }
 const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -35,6 +37,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         },
         setTotalUsersCount: (totalCount: number) => {
             dispatch(setTotalUsersCountAC(totalCount))
+        },
+        setToggleIsFetching: (isFetching:boolean) => {
+            dispatch(toggleFetching(isFetching))
         }
 
     }
