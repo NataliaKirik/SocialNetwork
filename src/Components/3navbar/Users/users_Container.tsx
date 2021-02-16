@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import {usersStateType, userType} from "../../../Redux/users_Reduser";
-import Users from "./Users";
+import UsersAPIContainer from "./UsersAPIContainer";
 
 const onButtonFollowAC = (userId: number) => {
     return {
@@ -40,6 +40,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     }
 }
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users)
+const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIContainer)
 
 export default UsersContainer
