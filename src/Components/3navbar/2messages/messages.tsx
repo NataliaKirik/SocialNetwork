@@ -20,12 +20,12 @@ type MessagesProps = {
 const Messages = (props: MessagesProps) => {
     let arrayUser = props.dataMessagePage.usersMessages.map(
         (user: usersMessagesType) => {
-            return (<div className={s.user}><User title={user.title} id={user.id} key={user.id}/></div>)
+            return (<div className={s.user} key={user.id}><User title={user.title} id={user.id}/></div>)
         }
     )
     let arrayMessages = props.dataMessagePage.messages.map(
         (message: MessagesType) => {
-            return (<div className={s.message}><Message title={message.title} id={message.id} key={message.id}/></div>)
+            return (<div className={s.message} key={message.id}><Message title={message.title} id={message.id}/></div>)
         }
     )
 

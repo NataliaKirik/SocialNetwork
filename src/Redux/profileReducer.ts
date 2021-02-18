@@ -14,7 +14,7 @@ let initialState = {
 }
 
 
-export const profileReducer = (state: initialStateProfileType = initialState, action: actionType) => {
+export const profileReducer = (state: initialStateProfileType = initialState, action: actionType): initialStateProfileType => {
 
     switch (action.type) {
         case 'SET_AVA':

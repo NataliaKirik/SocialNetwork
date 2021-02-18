@@ -14,7 +14,7 @@ type usersPropsType = {
 
 
 export function Users(props: usersPropsType) {
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    // let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     let pagesCountArray = []
     for (let i = 1; i <= 15; i++) {
         pagesCountArray.push(i)
@@ -22,12 +22,12 @@ export function Users(props: usersPropsType) {
     return (
         <div className={s.usersWrapper}>
             <div>
-                {pagesCountArray.map((p) => {
-                    return <span
-                        className={props.currentPage === p ? s.selectedPage : ''}
-                        onClick={() => {
-                            props.onPageChanged(p)
-                        }}>{p}</span>
+                {pagesCountArray.map((p, index) => {
+                    return <span key={index}
+                                 className={props.currentPage === p ? s.selectedPage : ''}
+                                 onClick={() => {
+                                     props.onPageChanged(p)
+                                 }}>{p}</span>
                 })}
             </div>
             {

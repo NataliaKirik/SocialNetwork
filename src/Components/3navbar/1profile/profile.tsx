@@ -9,7 +9,7 @@ type ProfilePropsType = {
 
 
 const Profile = (props: ProfilePropsType) => {
-    if (!props.avaUrls) {
+    if (!props.aboutMe && !props.avaUrls) {
         return <Preloader/>
     }
     return (

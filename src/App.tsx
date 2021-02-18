@@ -19,7 +19,7 @@ function App() {
             <Header/>
             <Navbar/>
             <Route render={() => <MainContainer/>} path={'/Main'}/>
-            <Route render={() => <ProfileContainer/>} path={'/Profile'}/>
+            <Route render={() => <ProfileContainer/>} path={'/Profile/:userId?'}/>
             <Route render={() => <UsersContainer/>} path={'/Users'}/>
             <Route render={() => <MessageContainer/>} path={'/Message'}/>
             <Route render={() => <News/>} path={'/News'}/>

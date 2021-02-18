@@ -45,8 +45,6 @@ const mapStateToProps = (state: RootState) => {
 //
 //     }
 // }
-
-
 const UsersContainer = connect(mapStateToProps, {
     onFollowButtonClick,
     setUsers,
