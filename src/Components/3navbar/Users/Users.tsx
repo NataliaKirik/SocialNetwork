@@ -4,6 +4,7 @@ import {userType} from "../../../Redux/users_Reduser";
 import {NavLink} from "react-router-dom";
 import {UsersPropsType} from "./UsersAPIContainer";
 import axios from "axios";
+import {usersApi} from "../../../api/api";
 
 type fProps = {
     onPageChanged: (p: number) => void
@@ -42,31 +43,20 @@ export function Users(props: UsersCommonPropsType) {
                                 <div>{'location.city'}</div>
 
                                 {u.followed ? <button onClick={() => {
-                                        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                            withCredentials: true,
-                                            headers: {
-                                                'API-KEY': 'ab61ac65-4f7d-4f34-b171-2bf7b69d7103'
-                                            }
-                                        }).then(response => {
-                                            if (response.data.resultCode === 0) {
+                                        usersApi.unfollowUser(u.id).then(data => {
+                                            if (data.resultCode === 0) {
                                                 props.onUNFollowButtonClick(u.id)
                                             }
                                         })
                                     }}>Unfollow</button>
                                     :
                                     <button onClick={() => {
-                                        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                            withCredentials: true,
-                                            headers: {
-                                                'API-KEY': 'ab61ac65-4f7d-4f34-b171-2bf7b69d7103'
-                                            }
-                                        }).then(response => {
-                                            if (response.data.resultCode === 0) {
+                                        usersApi.followUser(u.id).then(data => {
+                                            if (data.resultCode === 0) {
                                                 props.onFollowButtonClick(u.id)
                                             }
                                         })
                                     }}>Follow</button>}
-
                             </div>
                         )
                     }
