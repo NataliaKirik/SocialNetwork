@@ -9,7 +9,6 @@ const Header = (props: HeaderAPIContainerProps) => {
         <header className={s.headerWrapper}>
             <div className={s.loginBlock}>
                 {props.isAuth ? props.login : <NavLink to={'/login'}>Login</NavLink>}
-
             </div>
         </header>
     )

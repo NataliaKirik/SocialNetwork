@@ -1,13 +1,18 @@
 import React from "react";
 import {connect} from "react-redux";
-import {Dispatch} from "redux";
 import {userType} from "../../../Redux/users_Reduser";
 import UsersAPIContainer from "./UsersAPIContainer";
 import {RootState} from "../../../Redux/redux-store";
 
 const onFollowButtonClick = (userId: number) => {
     return {
-        type: 'TOGGLE_FOLLOW',
+        type: 'FOLLOW',
+        id: userId
+    }
+}
+const onUNFollowButtonClick = (userId: number) => {
+    return {
+        type: 'UNFOLLOW',
         id: userId
     }
 }
@@ -47,6 +52,7 @@ const mapStateToProps = (state: RootState) => {
 // }
 const UsersContainer = connect(mapStateToProps, {
     onFollowButtonClick,
+    onUNFollowButtonClick,
     setUsers,
     getPageNumber,
     setTotalUsersCount,

@@ -1,5 +1,5 @@
 type actionType = {
-    type: 'TOGGLE_FOLLOW' | 'SET_USERS' | 'SET_CURRENT_PAGE' | 'SET_TOTAL_USERS_COUNT' | 'TOGGLE_IS_FETCHING'
+    type: 'FOLLOW' | 'UNFOLLOW' | 'SET_USERS' | 'SET_CURRENT_PAGE' | 'SET_TOTAL_USERS_COUNT' | 'TOGGLE_IS_FETCHING'
     id: number
     users: Array<userType>
     currentPage: number
@@ -45,12 +45,23 @@ const usersReducer = (state: usersType = initialState, action: actionType) => {
         case 'SET_USERS': {
             return {...state, users: action.users}
         }
-        case 'TOGGLE_FOLLOW':
+        case 'FOLLOW':
             return {
                 ...state,
                 users: state.users.map((u) => {
                     if (u.id === action.id) {
-                        return {...u, followed: !u.followed}
+                        return {...u, followed: true}
+                    } else {
+                        return {...u, followed: u.followed}
+                    }
+                })
+            }
+        case 'UNFOLLOW':
+            return {
+                ...state,
+                users: state.users.map((u) => {
+                    if (u.id === action.id) {
+                        return {...u, followed: false}
                     } else {
                         return {...u, followed: u.followed}
                     }
