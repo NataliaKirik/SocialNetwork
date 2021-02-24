@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.module.css';
-import Header from "./Components/1header/header";
 import Navbar from "./Components/3navbar/navbar";
 import s from './App.module.css'
 import News from "./Components/3navbar/3news/news";
@@ -11,12 +10,13 @@ import MainContainer from "./Components/2main/main_Container";
 import MessageContainer from './Components/3navbar/2messages/messagesContainer';
 import UsersContainer from "./Components/3navbar/Users/users_Container";
 import {ProfileContainer} from "./Components/3navbar/1profile/profile_Container";
+import {HeaderContainer} from "./Components/1header/headerContainer";
 
 
 function App() {
     return (
         <div className={s.App}>
-            <Header/>
+            <HeaderContainer/>
             <Navbar/>
             <Route render={() => <MainContainer/>} path={'/Main'}/>
             <Route render={() => <ProfileContainer/>} path={'/Profile/:userId?'}/>
