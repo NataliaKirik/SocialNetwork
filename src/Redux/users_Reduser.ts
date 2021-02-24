@@ -1,10 +1,12 @@
 type actionType = {
-    type: 'FOLLOW' | 'UNFOLLOW' | 'SET_USERS' | 'SET_CURRENT_PAGE' | 'SET_TOTAL_USERS_COUNT' | 'TOGGLE_IS_FETCHING'
+    type: 'FOLLOW' | 'UNFOLLOW' | 'SET_USERS' | 'SET_CURRENT_PAGE' | 'SET_TOTAL_USERS_COUNT' | 'TOGGLE_IS_FETCHING' | 'FOLLOWING_PROCESS'
     id: number
     users: Array<userType>
     currentPage: number
     totalCount: number
     isFetching: boolean
+    loadingFollow: boolean
+    userId: number
 }
 export type usersStateType = {
     usersPage: usersType
@@ -15,6 +17,7 @@ export type usersType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
+    inFollowingProcess: any
 
 }
 export type userType = {
@@ -36,11 +39,11 @@ let initialState = {
     currentPage: 1,
     pageSize: 5,
     totalUsersCount: 0,
-    isFetching: true
-
+    isFetching: true,
+    inFollowingProcess: [2, 3]
 }
 
-const usersReducer = (state: usersType = initialState, action: actionType) => {
+const usersReducer = (state: usersType = initialState, action: actionType): usersType => {
     switch (action.type) {
         case 'SET_USERS': {
             return {...state, users: action.users}
@@ -48,7 +51,7 @@ const usersReducer = (state: usersType = initialState, action: actionType) => {
         case 'FOLLOW':
             return {
                 ...state,
-                users: state.users.map((u) => {
+                users: state.users.map((u: userType) => {
                     if (u.id === action.id) {
                         return {...u, followed: true}
                     } else {
@@ -59,7 +62,7 @@ const usersReducer = (state: usersType = initialState, action: actionType) => {
         case 'UNFOLLOW':
             return {
                 ...state,
-                users: state.users.map((u) => {
+                users: state.users.map((u: userType) => {
                     if (u.id === action.id) {
                         return {...u, followed: false}
                     } else {
@@ -82,6 +85,16 @@ const usersReducer = (state: usersType = initialState, action: actionType) => {
                 ...state,
                 isFetching: action.isFetching
             }
+        case 'FOLLOWING_PROCESS': {
+            return {
+                ...state,
+                inFollowingProcess: action.isFetching
+                    ? [...state.inFollowingProcess, action.userId]
+                    : [state.inFollowingProcess.filter((id: number) => id !== action.userId)]
+
+            }
+        }
+
 
         default:
             return state

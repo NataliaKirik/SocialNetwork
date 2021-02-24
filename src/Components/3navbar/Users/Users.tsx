@@ -3,7 +3,6 @@ import s from "./Users.module.css";
 import {userType} from "../../../Redux/users_Reduser";
 import {NavLink} from "react-router-dom";
 import {UsersPropsType} from "./UsersAPIContainer";
-import axios from "axios";
 import {usersApi} from "../../../api/api";
 
 type fProps = {
@@ -42,19 +41,24 @@ export function Users(props: UsersCommonPropsType) {
                                 <div>{u.status}</div>
                                 <div>{'location.city'}</div>
 
-                                {u.followed ? <button onClick={() => {
+                                {u.followed ?
+                                    <button disabled={props.inFollowingProcess.some(id => id === u.id)} onClick={() => {
+                                        props.setFollowingProcess(true, u.id)
                                         usersApi.unfollowUser(u.id).then(data => {
+                                            props.setFollowingProcess(false, u.id)
                                             if (data.resultCode === 0) {
                                                 props.onUNFollowButtonClick(u.id)
                                             }
                                         })
                                     }}>Unfollow</button>
                                     :
-                                    <button onClick={() => {
+                                    <button disabled={props.inFollowingProcess.some(id => id === u.id)} onClick={() => {
+                                        props.setFollowingProcess(true, u.id)
                                         usersApi.followUser(u.id).then(data => {
                                             if (data.resultCode === 0) {
                                                 props.onFollowButtonClick(u.id)
                                             }
+                                            props.setFollowingProcess(false, u.id)
                                         })
                                     }}>Follow</button>}
                             </div>

@@ -13,7 +13,7 @@ const reducers = combineReducers({
     mainPage: mainReducer,
     usersPage: usersReducer,
     profilePage: profileReducer,
-    auth: authReducer
+    auth: authReducer,
 });
 
 

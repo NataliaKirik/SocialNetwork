@@ -20,6 +20,11 @@ const setUsers = (users: Array<userType>) => ({type: 'SET_USERS', users})
 const getPageNumber = (currentPage: number) => ({type: 'SET_CURRENT_PAGE', currentPage})
 const setTotalUsersCount = (totalCount: number) => ({type: 'SET_TOTAL_USERS_COUNT', totalCount})
 const setToggleIsFetching = (isFetching: boolean) => ({type: 'TOGGLE_IS_FETCHING', isFetching})
+const setFollowingProcess = (isFetching: boolean, userId: number) => ({
+    type: 'FOLLOWING_PROCESS',
+    isFetching,
+    userId
+})
 
 const mapStateToProps = (state: RootState) => {
     return {
@@ -27,7 +32,8 @@ const mapStateToProps = (state: RootState) => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        inFollowingProcess: state.usersPage.inFollowingProcess
     }
 }
 // const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -57,6 +63,7 @@ const UsersContainer = connect(mapStateToProps, {
     getPageNumber,
     setTotalUsersCount,
     setToggleIsFetching,
+    setFollowingProcess
 })(UsersAPIContainer)
 
 export default UsersContainer

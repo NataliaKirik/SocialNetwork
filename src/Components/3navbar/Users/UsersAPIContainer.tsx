@@ -18,6 +18,8 @@ export type UsersPropsType = {
     setTotalUsersCount: (totalCount: number) => void
     setToggleIsFetching: (isFetching: boolean) => void
     isFetching: boolean
+    setFollowingProcess: (isFetching: boolean, usrId: number) => void
+    inFollowingProcess: Array<number>
 }
 
 class UsersAPIContainer extends React.Component<UsersPropsType, RootState> {
