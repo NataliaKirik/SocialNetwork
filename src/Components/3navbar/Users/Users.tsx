@@ -43,23 +43,11 @@ export function Users(props: UsersCommonPropsType) {
 
                                 {u.followed ?
                                     <button disabled={props.inFollowingProcess.some(id => id === u.id)} onClick={() => {
-                                        props.setFollowingProcess(true, u.id)
-                                        usersApi.unfollowUser(u.id).then(data => {
-                                            props.setFollowingProcess(false, u.id)
-                                            if (data.resultCode === 0) {
-                                                props.onUNFollowButtonClick(u.id)
-                                            }
-                                        })
+                                        props.unFollowUserTC(u.id)
                                     }}>Unfollow</button>
                                     :
                                     <button disabled={props.inFollowingProcess.some(id => id === u.id)} onClick={() => {
-                                        props.setFollowingProcess(true, u.id)
-                                        usersApi.followUser(u.id).then(data => {
-                                            if (data.resultCode === 0) {
-                                                props.onFollowButtonClick(u.id)
-                                            }
-                                            props.setFollowingProcess(false, u.id)
-                                        })
+                                        props.followUserTC(u.id)
                                     }}>Follow</button>}
                             </div>
                         )

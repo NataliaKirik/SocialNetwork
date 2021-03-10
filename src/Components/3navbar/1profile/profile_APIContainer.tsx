@@ -4,7 +4,8 @@ import axios from "axios";
 import {RootState} from "../../../Redux/redux-store";
 import {OwnAPIContainerPropsType} from "./profile_Container";
 import {RouteComponentProps} from "react-router-dom";
-
+import {usersApi} from "../../../api/api";
+import {getProfileThunkCreator} from "../../../Redux/profileReducer";
 
 type PathParamsType = {
     userId: string
@@ -18,17 +19,12 @@ class ProfileAPIContainer extends React.Component<CommonPropsType, RootState> {
         if (!userId) {
             userId = '2'
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-            .then(response => {
-                this.props.setProfileAva(response.data.photos.small)
-                this.props.setStatusAboutUser(response.data.aboutMe)
-            })
-
+        this.props.getProfileThunkCreator(userId)
     }
 
     render() {
         return <>
-            <Profile avaUrls={this.props.avatars} aboutMe={this.props.statusAboutUser}/>
+            <Profile avaUrls={this.props.avatars} name={this.props.fullName}/>
         </>
     }
 }

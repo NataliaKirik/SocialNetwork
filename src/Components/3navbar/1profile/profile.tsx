@@ -4,19 +4,19 @@ import {Preloader} from "../../../common/Preloader";
 
 type ProfilePropsType = {
     avaUrls: string
-    aboutMe: string
+    name: string
 }
 
 
 const Profile = (props: ProfilePropsType) => {
-    if (!props.aboutMe && !props.avaUrls) {
+    if (!props.name && !props.avaUrls) {
         return <Preloader/>
     }
     return (
         <div className={s.profileWrapper}>
             <div className={s.titleProfile}>Profile</div>
             <img src={props.avaUrls} alt={'avatar'}/>
-            <div>About me : <span>{props.aboutMe}</span></div>
+            <div>Full name : <span>{props.name}</span></div>
         </div>
     )
 }
