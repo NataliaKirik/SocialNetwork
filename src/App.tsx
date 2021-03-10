@@ -11,6 +11,7 @@ import MessageContainer from './Components/3navbar/2messages/messagesContainer';
 import UsersContainer from "./Components/3navbar/Users/users_Container";
 import {ProfileContainer} from "./Components/3navbar/1profile/profile_Container";
 import {HeaderContainer} from "./Components/1header/headerContainer";
+import {Login} from "./Components/Login/Login";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route render={() => <News/>} path={'/News'}/>
             <Route render={() => <Music/>} path={'/Music'}/>
             <Route render={() => <Settings/>} path={'/Settings'}/>
+            <Route render={() => <Login/>} path={'/Login'}/>
 
             {/*<Footer/>*/}
         </div>

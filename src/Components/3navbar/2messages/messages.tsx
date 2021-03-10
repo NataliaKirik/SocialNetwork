@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from "react";
 import s from './messages.module.css'
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Redirect} from "react-router-dom";
 import User from "./message/user/user";
 import Message from "./message/usersMessage/message";
 import {
@@ -14,7 +14,7 @@ type MessagesProps = {
     dataMessagePage: messagePageType
     addMessage: () => void
     messageChange: (text: string) => void
-
+    isAuth: boolean
 }
 
 const Messages = (props: MessagesProps) => {
@@ -37,6 +37,7 @@ const Messages = (props: MessagesProps) => {
         let text = e.currentTarget.value
         props.messageChange(text)
     }
+
     return (
         <BrowserRouter>
 

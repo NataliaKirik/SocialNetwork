@@ -1,6 +1,7 @@
 import React from "react";
 import s from './profile.module.css'
 import {Preloader} from "../../../common/Preloader";
+import {Redirect} from "react-router-dom";
 
 type ProfilePropsType = {
     avaUrls: string

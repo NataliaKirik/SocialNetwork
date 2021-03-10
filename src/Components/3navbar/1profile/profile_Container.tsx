@@ -4,8 +4,9 @@ import ProfileAPIContainer from "./profile_APIContainer";
 import {RootState} from "../../../Redux/redux-store";
 import {withRouter} from "react-router-dom";
 import {getProfileThunkCreator, setFullName, setProfileAva} from "../../../Redux/profileReducer";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 
-type MapStateToPropsType = {
+export  type MapStateToPropsType = {
     avatars: string
     fullName: string
 }
@@ -23,7 +24,9 @@ let mapStateToProps = (state: RootState): MapStateToPropsType => {
         fullName: state.profilePage.fullName
     }
 }
-let withUrlContainerComponent = withRouter(ProfileAPIContainer)
+
+let AuthRedirectComponent = withAuthRedirect(ProfileAPIContainer)
+let withUrlContainerComponent = withRouter(AuthRedirectComponent)
 export const ProfileContainer = connect(mapStateToProps, {
     setProfileAva,
     setFullName,

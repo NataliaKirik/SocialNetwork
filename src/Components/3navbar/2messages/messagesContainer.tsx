@@ -1,8 +1,9 @@
 import React from "react";
 import Messages from "./messages";
 import {connect} from "react-redux";
-import {RootStateType} from "../../../Redux/oldStore_Types";
 import {Dispatch} from "redux";
+import {RootState} from "../../../Redux/redux-store";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 
 const addMessageActionCreator = () => ({type: 'ADD_MESSAGE'})
 const updateNewMessageTextActionCreator = (text: string) => ({
@@ -10,9 +11,10 @@ const updateNewMessageTextActionCreator = (text: string) => ({
     newText: text
 })
 
-const mapStateToProps = (state: RootStateType) => {
+const mapStateToProps = (state: RootState) => {
     return {
-        dataMessagePage: state.messagePage
+        dataMessagePage: state.messagePage,
+        isAuth: state.auth.isAuth
     }
 
 }
@@ -26,7 +28,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         }
     }
 }
-
-const MessageContainer = connect(mapStateToProps, mapDispatchToProps)(Messages)
+let AuthRedirectComponent = withAuthRedirect(Messages)
+const MessageContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent)
 
 export default MessageContainer
