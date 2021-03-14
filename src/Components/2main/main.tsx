@@ -2,6 +2,7 @@ import React, {ChangeEvent} from "react";
 import s from './main.module.css'
 import Post from "./post/post";
 import {mainPageType, PostsType} from "../../Redux/oldStore_Types";
+import {ProfileStatus} from "./status/profileStatus";
 
 type MainProps = {
     dataMain: mainPageType
@@ -28,6 +29,8 @@ const Main = (props: MainProps) => {
     }
 
     return (<div className={s.mainWrapper}>
+        <b>Status</b>
+        <ProfileStatus status={'hello'}/>
         <b> Posts</b>
         <div><textarea onChange={onPostChange} value={props.dataMain.newPostText}/></div>
 

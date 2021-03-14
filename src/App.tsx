@@ -9,9 +9,9 @@ import {Route} from "react-router-dom";
 import MainContainer from "./Components/2main/main_Container";
 import MessageContainer from './Components/3navbar/2messages/messagesContainer';
 import UsersContainer from "./Components/3navbar/Users/users_Container";
-import {ProfileContainer} from "./Components/3navbar/1profile/profile_Container";
 import {HeaderContainer} from "./Components/1header/headerContainer";
 import {Login} from "./Components/Login/Login";
+import {ProfileContainer} from "./Components/3navbar/1profile/profile_Container";
 
 
 function App() {
