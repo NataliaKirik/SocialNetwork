@@ -1,6 +1,7 @@
 import React from "react";
 
 export class ProfileStatus extends React.Component<any, any> {
+
     state = {
         editMode: false
     }

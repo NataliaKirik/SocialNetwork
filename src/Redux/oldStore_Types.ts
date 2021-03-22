@@ -49,7 +49,7 @@ let oldStore: StoreType = {
 
     dispatch(action) {
         this._state.messagePage = messagesReducer(this._state.messagePage, action)
-        this._state.mainPage = mainReducer(this._state.mainPage, action)
+        // this._state.mainPage = mainReducer(this._state.mainPage, action)
         this._callSubscriber(this._state)
     }
 }

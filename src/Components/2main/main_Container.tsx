@@ -1,32 +1,30 @@
-// import React from "react";
-import Main from "./main";
-import {RootStateType} from "../../Redux/oldStore_Types";
+import React from "react";
+import Main, {MainProps} from "./main";
 import {connect} from "react-redux";
-import {Dispatch} from "redux";
+import {compose} from "redux";
+import {RootState} from "../../Redux/redux-store";
+import {addPost, getStatus, updateNewPostText, updateStatus} from "../../Redux/main_Reducer";
 
-const addPostActionCreator = () => ({type: 'ADD_POST'})
-const updateNewPostTextActionCreator = (text: string) => ({
-    type: 'UPDATE_NEW_POST_TEXT',
-    newText: text
-})
 
-const mapStateToProps = (state: RootStateType) => {
+const mapStateToProps = (state: RootState) => {
     return {
-        dataMain: state.mainPage
-    }
-}
-const mapDispatchToProps = (dispatch: Dispatch) => {
-    return {
-        updateNewPostText: (text: string) => {
-            dispatch(updateNewPostTextActionCreator(text))
-        },
-        addPost: () => {
-            dispatch(addPostActionCreator())
-        }
+        dataMain: state.mainPage,
+        status: state.mainPage.status
     }
 }
 
+class MainContainer extends React.Component<MainProps, RootState> {
 
-const MainContainer = connect(mapStateToProps, mapDispatchToProps)(Main)
+    componentDidMount() {
+        this.props.getStatus('3')
+    }
 
-export default MainContainer
+    render() {
+        return <Main {...this.props}/>;
+    }
+}
+
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, {addPost, updateNewPostText, getStatus, updateStatus})
+)(MainContainer)
+

@@ -21,10 +21,22 @@ export const usersApi = {
         return instance.post(`follow/${id}`).then(response => response.data)
     },
     getProfile(id: string) {
-        return instance.get(`profile/${id}`).then(response => response.data)
+        console.warn('Obsolete method.Please use mainPageApi object')
+        return mainPageApi.getProfile(id)
     },
-    getAuth(){
+    getAuth() {
         return instance.get(`auth/me`).then(response => response.data)
     }
+}
 
+export const mainPageApi = {
+    getProfile(id: string) {
+        return instance.get(`profile/${id}`).then(response => response.data)
+    },
+    getStatus(id: string) {
+        return instance.get(`/profile/status/${id}`).then(response => response.data)
+    },
+    updateStatus(status: string) {
+        return instance.put(`/profile/status`, {status: status})
+    }
 }

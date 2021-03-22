@@ -4,10 +4,13 @@ import Post from "./post/post";
 import {mainPageType, PostsType} from "../../Redux/oldStore_Types";
 import {ProfileStatus} from "./status/profileStatus";
 
-type MainProps = {
-    dataMain: mainPageType
-    updateNewPostText: (text: string) => void
+export type MainProps = {
     addPost: () => void
+    dataMain: mainPageType
+    getStatus: (id: string) => void
+    status: string
+    updateNewPostText: (text: string) => void
+    updateStatus: () => void
 }
 
 const Main = (props: MainProps) => {
@@ -29,8 +32,9 @@ const Main = (props: MainProps) => {
     }
 
     return (<div className={s.mainWrapper}>
-        <b>Status</b>
-        <ProfileStatus status={'hello'}/>
+        <b>My status</b>
+        <ProfileStatus status={props.status}/>
+
         <b> Posts</b>
         <div><textarea onChange={onPostChange} value={props.dataMain.newPostText}/></div>
 
