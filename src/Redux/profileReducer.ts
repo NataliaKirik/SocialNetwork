@@ -43,7 +43,7 @@ export const setFullName = (fullName: string) => ({
     fullName: fullName
 })
 
-export const getProfileThunkCreator = (userId: string) => {
+export const getProfileThunkCreator = (userId: string) => { 
     return (dispatch: Dispatch) => {
         usersApi.getProfile(userId)
             .then(response => {

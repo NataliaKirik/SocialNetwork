@@ -1,8 +1,9 @@
 import React, {ChangeEvent} from "react";
+import {mainPageType} from "../../Redux/main_Reducer";
 import s from './main.module.css'
 import Post from "./post/post";
-import {mainPageType, PostsType} from "../../Redux/oldStore_Types";
 import {ProfileStatus} from "./status/profileStatus";
+
 
 export type MainProps = {
     addPost: () => void
@@ -16,7 +17,7 @@ export type MainProps = {
 const Main = (props: MainProps) => {
     let posts = [
         props.dataMain.posts.map(
-            (p: PostsType) => {
+            (p) => {
                 return (<Post title={p.title} likesCount={p.likesCount} name={p.name} id={p.id} key={p.id}/>)
             }
         )

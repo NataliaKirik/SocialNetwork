@@ -7,7 +7,6 @@ import {authReducer} from "./auth_reducer";
 import thunkMiddleware from "redux-thunk";
 
 export type RootState = ReturnType<typeof reducers>
-export type StoreReduxType = typeof store
 
 const reducers = combineReducers({
     messagePage: messagesReducer,

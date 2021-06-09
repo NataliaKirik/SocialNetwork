@@ -1,10 +1,11 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import s from './user.module.css'
-import {usersMessagesType} from "../../../../../Redux/oldStore_Types";
+import {messageType} from "../../../../../Redux/messages_Reducer";
 
 
-const User: React.FC<usersMessagesType> = (props) => {
+
+const User: React.FC<messageType> = (props) => {
     return (
             <NavLink to={'/Message/' + props.id} className={s.userMessageWrapper}>
 

@@ -7,6 +7,13 @@ type actionType = {
     status: string
 }
 export type mainPageType = typeof initialState
+export type postsType = Array<postType>
+export type postType = {
+    id: number
+    title: string
+    likesCount: number
+    name: string
+}
 
 let initialState = {
     posts: [

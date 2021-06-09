@@ -1,17 +1,13 @@
 import React, {ChangeEvent} from "react";
 import s from './messages.module.css'
-import {BrowserRouter, Redirect} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import User from "./message/user/user";
 import Message from "./message/usersMessage/message";
-import {
-    messagePageType,
-    MessagesType,
-    usersMessagesType
-} from "../../../Redux/oldStore_Types";
+import {messagesInitStateType} from "../../../Redux/messages_Reducer";
 
 
 type MessagesProps = {
-    dataMessagePage: messagePageType
+    dataMessagePage: messagesInitStateType
     addMessage: () => void
     messageChange: (text: string) => void
     isAuth: boolean
@@ -19,12 +15,12 @@ type MessagesProps = {
 
 const Messages = (props: MessagesProps) => {
     let arrayUser = props.dataMessagePage.usersMessages.map(
-        (user: usersMessagesType) => {
+        (user) => {
             return (<div className={s.user} key={user.id}><User title={user.title} id={user.id}/></div>)
         }
     )
     let arrayMessages = props.dataMessagePage.messages.map(
-        (message: MessagesType) => {
+        (message) => {
             return (<div className={s.message} key={message.id}><Message title={message.title} id={message.id}/></div>)
         }
     )

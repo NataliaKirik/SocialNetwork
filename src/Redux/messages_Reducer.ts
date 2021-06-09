@@ -2,7 +2,8 @@ type actionType = {
     type: 'ADD_MESSAGE' | 'UPDATE_NEW_MESSAGE_TEXT'
     newText: string
 }
-
+export type messagesInitStateType = typeof initialState
+export type messageType = { id: number, title: string }
 let initialState = {
     usersMessages: [
         {id: 1, title: 'Igor Petrov'},
@@ -21,7 +22,7 @@ let initialState = {
     newMessageText: ''
 }
 
-const messagesReducer = (state = initialState, action: actionType) => {
+const messagesReducer = (state: messagesInitStateType = initialState, action: actionType) => {
     switch (action.type) {
         case'UPDATE_NEW_MESSAGE_TEXT': {
             return {
